@@ -27,7 +27,7 @@ export const CustomerStoriesSection = () => {
     setIsPlaying(true);
     setIsMuted(false);
     if (videoRef.current) {
-      videoRef.current.play().catch(() => {});
+      videoRef.current.play().catch(() => { });
     }
   };
 
@@ -101,18 +101,10 @@ export const CustomerStoriesSection = () => {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="lg:col-span-6 space-y-6 text-left"
         >
-          {/* Eyebrow Label */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#2d6a4f]/15 border border-[#2d6a4f]/40 text-[#2d6a4f] text-xs font-bold uppercase tracking-widest shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 text-[#2d6a4f] animate-pulse" />
-            <span>Aerial Township Showcase</span>
-          </div>
-
           {/* Headline */}
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif-luxury font-bold text-[#160d02] tracking-tight leading-[1.15]">
-            Experience Our Master-Planned{' '}
-            <span className="font-serif-luxury text-[#160d02] inline-block">
-              Luxury Estates & Townships.
-            </span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-[#160d02] tracking-tight leading-snug">
+            Experience Our Master-Planned <br className="hidden sm:inline" />
+            Luxury Estates & Townships.
           </h2>
 
           {/* Description Subtext */}
@@ -120,45 +112,45 @@ export const CustomerStoriesSection = () => {
             Take an aerial tour of our signature gated communities, premium villa developments, and world-class residential infrastructure built by Ajay Homes & Estates.
           </p>
 
-          {/* Highlights 2x2 Grid */}
-          <div className="grid grid-cols-2 gap-4 pt-2">
-            <div className="p-3.5 rounded-2xl bg-white/70 border border-[#160d02]/10 shadow-sm flex items-start gap-3">
-              <div className="p-2 rounded-xl bg-[#2d6a4f]/15 text-[#2d6a4f] flex-shrink-0">
-                <Building2 className="w-4 h-4 text-[#2d6a4f]" />
+          {/* Highlights 2x2 Grid - Responsive and perfectly aligned */}
+          <div className="grid grid-cols-2 gap-2.5 sm:gap-4 pt-2">
+            <div className="p-2.5 sm:p-3.5 rounded-2xl bg-white/70 border border-[#160d02]/10 shadow-sm flex items-center gap-2 sm:gap-3">
+              <div className="p-1.5 sm:p-2 rounded-xl bg-[#2d6a4f]/15 text-[#2d6a4f] flex-shrink-0">
+                <Building2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#2d6a4f]" />
               </div>
-              <div>
-                <span className="text-base font-bold font-roboto text-[#160d02] block">150+ Acres</span>
-                <span className="text-xs text-[#666057] font-roboto">Master-Planned Townships</span>
-              </div>
-            </div>
-
-            <div className="p-3.5 rounded-2xl bg-white/70 border border-[#160d02]/10 shadow-sm flex items-start gap-3">
-              <div className="p-2 rounded-xl bg-[#2d6a4f]/15 text-[#2d6a4f] flex-shrink-0">
-                <Users className="w-4 h-4 text-[#2d6a4f]" />
-              </div>
-              <div>
-                <span className="text-base font-bold font-roboto text-[#160d02] block">1000+ Families</span>
-                <span className="text-xs text-[#666057] font-roboto">Happy Homeowners</span>
+              <div className="min-w-0 flex-1">
+                <span className="text-xs sm:text-base font-bold font-roboto text-[#160d02] block whitespace-nowrap leading-tight">150+ Acres</span>
+                <span className="text-[10px] sm:text-xs text-[#666057] font-roboto block leading-tight mt-0.5 truncate sm:whitespace-normal">Master-Planned</span>
               </div>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-white/70 border border-[#160d02]/10 shadow-sm flex items-start gap-3">
-              <div className="p-2 rounded-xl bg-[#2d6a4f]/15 text-[#2d6a4f] flex-shrink-0">
-                <ShieldCheck className="w-4 h-4 text-[#2d6a4f]" />
+            <div className="p-2.5 sm:p-3.5 rounded-2xl bg-white/70 border border-[#160d02]/10 shadow-sm flex items-center gap-2 sm:gap-3">
+              <div className="p-1.5 sm:p-2 rounded-xl bg-[#2d6a4f]/15 text-[#2d6a4f] flex-shrink-0">
+                <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#2d6a4f]" />
               </div>
-              <div>
-                <span className="text-base font-bold font-roboto text-[#160d02] block">100% CMDA</span>
-                <span className="text-xs text-[#666057] font-roboto">Approved & Clear Titles</span>
+              <div className="min-w-0 flex-1">
+                <span className="text-xs sm:text-base font-bold font-roboto text-[#160d02] block whitespace-nowrap leading-tight">1000+ Families</span>
+                <span className="text-[10px] sm:text-xs text-[#666057] font-roboto block leading-tight mt-0.5 truncate sm:whitespace-normal">Happy Homeowners</span>
               </div>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-white/70 border border-[#160d02]/10 shadow-sm flex items-start gap-3">
-              <div className="p-2 rounded-xl bg-[#2d6a4f]/15 text-[#2d6a4f] flex-shrink-0">
-                <MapPin className="w-4 h-4 text-[#2d6a4f]" />
+            <div className="p-2.5 sm:p-3.5 rounded-2xl bg-white/70 border border-[#160d02]/10 shadow-sm flex items-center gap-2 sm:gap-3">
+              <div className="p-1.5 sm:p-2 rounded-xl bg-[#2d6a4f]/15 text-[#2d6a4f] flex-shrink-0">
+                <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#2d6a4f]" />
               </div>
-              <div>
-                <span className="text-base font-bold font-roboto text-[#160d02] block">Prime Hubs</span>
-                <span className="text-xs text-[#666057] font-roboto">Velachery, OMR, Porur</span>
+              <div className="min-w-0 flex-1">
+                <span className="text-xs sm:text-base font-bold font-roboto text-[#160d02] block whitespace-nowrap leading-tight">100% CMDA</span>
+                <span className="text-[10px] sm:text-xs text-[#666057] font-roboto block leading-tight mt-0.5 truncate sm:whitespace-normal">Approved Titles</span>
+              </div>
+            </div>
+
+            <div className="p-2.5 sm:p-3.5 rounded-2xl bg-white/70 border border-[#160d02]/10 shadow-sm flex items-center gap-2 sm:gap-3">
+              <div className="p-1.5 sm:p-2 rounded-xl bg-[#2d6a4f]/15 text-[#2d6a4f] flex-shrink-0">
+                <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#2d6a4f]" />
+              </div>
+              <div className="min-w-0 flex-1">
+                <span className="text-xs sm:text-base font-bold font-roboto text-[#160d02] block whitespace-nowrap leading-tight">Prime Hubs</span>
+                <span className="text-[10px] sm:text-xs text-[#666057] font-roboto block leading-tight mt-0.5 truncate sm:whitespace-normal">Velachery, OMR</span>
               </div>
             </div>
           </div>
@@ -179,21 +171,25 @@ export const CustomerStoriesSection = () => {
 
         </motion.div>
 
-        {/* RIGHT COLUMN: Review / Flythrough Video Card */}
+        {/* RIGHT COLUMN: Review / Flythrough Video Card Container */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="lg:col-span-6 w-full"
+          className="lg:col-span-6 w-full p-3 sm:p-6 lg:p-7 rounded-3xl sm:rounded-[2.5rem] bg-[#2d6a4f] shadow-2xl relative overflow-hidden border border-[#2d6a4f]/20 flex items-center justify-center"
         >
+          {/* Subtle Ambient Decorative Glows inside Green Background */}
+          <div className="absolute -top-20 -right-20 w-60 h-60 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-black/25 rounded-full blur-3xl pointer-events-none" />
+
           <motion.div
             layout
-            whileHover={{ y: isOpen ? 0 : -6 }}
+            whileHover={{ y: isOpen ? 0 : -4 }}
             transition={{ duration: 0.4 }}
             onClick={!isOpen ? handleOpenAndPlay : undefined}
-            className={`relative w-full overflow-hidden transition-all duration-700 ease-in-out cursor-pointer shadow-2xl rounded-3xl border border-black/10 bg-[#0c0d10] ${
-              isOpen ? 'aspect-video scale-102 ring-4 ring-[#FE9601]/40' : 'aspect-video hover:shadow-[0_25px_60px_rgba(254,150,1,0.3)]'
+            className={`relative w-full overflow-hidden transition-all duration-700 ease-in-out cursor-pointer shadow-2xl rounded-2xl sm:rounded-3xl border border-white/20 bg-[#0c0d10] ${
+              isOpen ? 'aspect-video scale-102 ring-4 ring-white/50' : 'aspect-video hover:shadow-[0_20px_50px_rgba(0,0,0,0.4)]'
             }`}
           >
             {/* HTML5 Video Player */}
@@ -223,14 +219,14 @@ export const CustomerStoriesSection = () => {
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="absolute top-4 right-4 z-20 glass-pill-dark px-3 py-1.5 rounded-full flex items-center gap-1.5 border border-white/20 shadow-lg text-[11px] font-semibold text-white pointer-events-none"
+                className="absolute top-2.5 right-2.5 sm:top-4 sm:right-4 z-20 glass-pill-dark px-2 py-1 sm:px-3 sm:py-1.5 rounded-full flex items-center gap-1 sm:gap-1.5 border border-white/20 shadow-lg text-[9px] sm:text-[11px] font-semibold text-white pointer-events-none"
               >
                 <div className="flex text-[#FE9601]">
-                  <Star className="w-3 h-3 fill-[#FE9601]" />
-                  <Star className="w-3 h-3 fill-[#FE9601]" />
-                  <Star className="w-3 h-3 fill-[#FE9601]" />
-                  <Star className="w-3 h-3 fill-[#FE9601]" />
-                  <Star className="w-3 h-3 fill-[#FE9601]" />
+                  <Star className="w-2.5 h-2.5 sm:w-3 sm:h-3 fill-[#FE9601]" />
+                  <Star className="w-2.5 h-2.5 sm:w-3 sm:h-3 fill-[#FE9601]" />
+                  <Star className="w-2.5 h-2.5 sm:w-3 sm:h-3 fill-[#FE9601]" />
+                  <Star className="w-2.5 h-2.5 sm:w-3 sm:h-3 fill-[#FE9601]" />
+                  <Star className="w-2.5 h-2.5 sm:w-3 sm:h-3 fill-[#FE9601]" />
                 </div>
                 <span>Aerial Drone Tour</span>
               </motion.div>
@@ -238,35 +234,35 @@ export const CustomerStoriesSection = () => {
 
             {/* Prominent Multi-Ring Animated Play Button */}
             {(!isOpen || !isPlaying) && (
-              <div className="absolute inset-0 flex flex-col items-center justify-center z-20 pointer-events-none space-y-3">
+              <div className="absolute inset-0 flex flex-col items-center justify-center z-20 pointer-events-none space-y-1.5 sm:space-y-3">
                 <motion.button
                   whileHover={{ scale: 1.15 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={!isOpen ? handleOpenAndPlay : togglePlayPause}
-                  className="pointer-events-auto relative w-16 h-16 sm:w-20 sm:h-20 rounded-full btn-gold-gradient flex items-center justify-center shadow-[0_0_40px_rgba(254,150,1,0.6)] group cursor-pointer"
+                  className="pointer-events-auto relative w-11 h-11 sm:w-20 sm:h-20 rounded-full btn-gold-gradient flex items-center justify-center shadow-[0_0_20px_rgba(254,150,1,0.5)] sm:shadow-[0_0_40px_rgba(254,150,1,0.6)] group cursor-pointer"
                   aria-label="Play Drone Township Video"
                 >
                   {/* Outer Pulsing Rings */}
                   <motion.span
-                    animate={{ scale: [1, 1.4, 1], opacity: [0.6, 0, 0.6] }}
+                    animate={{ scale: [1, 1.3, 1], opacity: [0.6, 0, 0.6] }}
                     transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
-                    className="absolute inset-0 rounded-full border-2 border-[#FE9601]"
+                    className="absolute inset-0 rounded-full border border-sm sm:border-2 border-[#FE9601]"
                   />
                   <motion.span
-                    animate={{ scale: [1, 1.7, 1], opacity: [0.4, 0, 0.4] }}
+                    animate={{ scale: [1, 1.5, 1], opacity: [0.4, 0, 0.4] }}
                     transition={{ duration: 2.5, delay: 0.5, repeat: Infinity, ease: 'easeInOut' }}
                     className="absolute inset-0 rounded-full border border-[#FFC973]"
                   />
 
-                  <div className="relative w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors">
-                    <Play className="w-6 h-6 sm:w-8 sm:h-8 text-black fill-black ml-1" />
+                  <div className="relative w-8 h-8 sm:w-16 sm:h-16 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors">
+                    <Play className="w-4 h-4 sm:w-8 sm:h-8 text-black fill-black ml-0.5 sm:ml-1" />
                   </div>
                 </motion.button>
 
                 <motion.p
                   animate={{ y: [0, 3, 0] }}
                   transition={{ duration: 2, repeat: Infinity }}
-                  className="text-white text-xs font-bold uppercase tracking-wider drop-shadow-lg bg-black/50 px-3.5 py-1.5 rounded-full border border-white/20 backdrop-blur-md"
+                  className="text-white text-[9px] sm:text-xs font-bold uppercase tracking-wider drop-shadow-lg bg-black/60 px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full border border-white/20 backdrop-blur-md"
                 >
                   {!isOpen ? 'Click to Watch Aerial Flythrough' : 'Paused — Click to Resume'}
                 </motion.p>
@@ -281,12 +277,12 @@ export const CustomerStoriesSection = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 20 }}
                   transition={{ duration: 0.3 }}
-                  className="absolute bottom-0 left-0 right-0 z-30 p-4 bg-gradient-to-t from-black/95 via-black/70 to-transparent flex flex-col gap-2.5"
+                  className="absolute bottom-0 left-0 right-0 z-30 p-2 sm:p-4 bg-gradient-to-t from-black/95 via-black/70 to-transparent flex flex-col gap-1.5 sm:gap-2.5"
                 >
                   {/* Interactive Seek Bar */}
                   <div
                     onClick={handleSeek}
-                    className="w-full h-2 bg-white/30 hover:h-3 rounded-full overflow-hidden cursor-pointer transition-all relative group"
+                    className="w-full h-1.5 sm:h-2 bg-white/30 hover:h-2.5 rounded-full overflow-hidden cursor-pointer transition-all relative group"
                   >
                     <div
                       style={{ width: `${progress}%` }}
@@ -294,21 +290,21 @@ export const CustomerStoriesSection = () => {
                     />
                   </div>
 
-                  <div className="flex items-center justify-between text-xs text-white pt-1">
+                  <div className="flex items-center justify-between text-[10px] sm:text-xs text-white pt-0.5">
                     {/* Play/Pause & Sound Controls */}
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-1.5 sm:gap-3">
                       <button
                         onClick={togglePlayPause}
-                        className="btn-gold-gradient py-1.5 px-3.5 rounded-xl text-black font-extrabold flex items-center gap-1.5 text-xs shadow-lg hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                        className="btn-gold-gradient py-1 px-2.5 sm:py-1.5 sm:px-3.5 rounded-lg sm:rounded-xl text-black font-extrabold flex items-center gap-1 text-[10px] sm:text-xs shadow-lg hover:scale-105 active:scale-95 transition-all cursor-pointer"
                       >
                         {isPlaying ? (
                           <>
-                            <Pause className="w-3.5 h-3.5 text-black fill-black" />
+                            <Pause className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-black fill-black" />
                             <span>Pause</span>
                           </>
                         ) : (
                           <>
-                            <Play className="w-3.5 h-3.5 text-black fill-black" />
+                            <Play className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-black fill-black" />
                             <span>Play Video</span>
                           </>
                         )}
@@ -316,13 +312,13 @@ export const CustomerStoriesSection = () => {
 
                       <button
                         onClick={toggleMute}
-                        className="p-1.5 rounded-xl glass-pill-dark hover:bg-white/20 transition-colors text-white cursor-pointer"
+                        className="p-1 sm:p-1.5 rounded-lg sm:rounded-xl glass-pill-dark hover:bg-white/20 transition-colors text-white cursor-pointer"
                         aria-label="Toggle Mute"
                       >
                         {isMuted ? (
-                          <VolumeX className="w-3.5 h-3.5 text-white/60" />
+                          <VolumeX className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white/60" />
                         ) : (
-                          <Volume2 className="w-3.5 h-3.5 text-[#FE9601]" />
+                          <Volume2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#FE9601]" />
                         )}
                       </button>
 
@@ -339,10 +335,10 @@ export const CustomerStoriesSection = () => {
                     {/* Return Button */}
                     <button
                       onClick={handleClosePlayer}
-                      className="glass-pill-dark px-3 py-1.5 rounded-xl text-xs text-white/90 hover:text-white flex items-center gap-1.5 shadow-md border border-white/20 cursor-pointer hover:bg-white/20 transition-all"
+                      className="glass-pill-dark px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl text-[9px] sm:text-xs text-white/90 hover:text-white flex items-center gap-1 shadow-md border border-white/20 cursor-pointer hover:bg-white/20 transition-all"
                     >
-                      <RotateCcw className="w-3 h-3 text-[#FE9601]" />
-                      <span>Return to Preview</span>
+                      <RotateCcw className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#FE9601]" />
+                      <span>Return</span>
                     </button>
                   </div>
                 </motion.div>

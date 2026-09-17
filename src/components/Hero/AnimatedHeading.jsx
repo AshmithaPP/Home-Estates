@@ -78,7 +78,7 @@ export const AnimatedHeading = ({ headingLine1, headingLine2, accentWord, slideI
   };
 
   return (
-    <div className="min-h-[90px] sm:min-h-[120px] md:min-h-[140px] text-left select-none">
+    <div className="min-h-0 sm:min-h-[120px] md:min-h-[140px] text-left select-none">
       <AnimatePresence mode="wait">
         <motion.div
           key={`heading-block-${slideId}`}
@@ -99,12 +99,12 @@ export const AnimatedHeading = ({ headingLine1, headingLine2, accentWord, slideI
           className="space-y-0.5"
         >
           {/* Line 1: Live better, */}
-          <div className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-serif-luxury font-bold text-white tracking-tight leading-[1.05]">
+          <div className="text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-serif-luxury font-bold text-white tracking-tight leading-[1.08]">
             {renderLine(headingLine1)}
           </div>
 
           {/* Line 2: closer to USC */}
-          <div className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-serif-luxury font-bold text-white tracking-tight leading-[1.05]">
+          <div className="text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-serif-luxury font-bold text-white tracking-tight leading-[1.08]">
             {renderLine(headingLine2)}
           </div>
         </motion.div>

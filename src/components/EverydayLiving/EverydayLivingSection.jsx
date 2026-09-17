@@ -76,48 +76,60 @@ export const EverydayLivingSection = () => {
   const rightImgY3 = useTransform(scrollYProgress, [0.60, 0.90], ['100%', '0%']);
 
   return (
-    <div id="interior" ref={sectionRef} className="relative h-[250vh] bg-[#FFF5E3] text-[#160d02]">
-      {/* Sticky Full-Viewport Stage */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between px-6 sm:px-12 py-6 max-w-[1800px] mx-auto">
+    <div id="interior" ref={sectionRef} className="relative h-auto lg:h-[250vh] bg-[#FFF5E3] text-[#160d02] py-10 lg:py-0">
+      {/* Stage: Sticky full viewport on desktop (lg:), regular flow on mobile */}
+      <div className="relative lg:sticky lg:top-0 h-auto lg:h-screen w-full overflow-visible lg:overflow-hidden flex flex-col justify-center px-4 sm:px-8 lg:px-12 py-4 lg:py-6 max-w-[1800px] mx-auto">
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center h-full my-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center h-auto lg:h-full lg:max-h-[calc(100vh-2rem)] my-auto">
 
-          {/* Left Column (50% Width) - Packed with Rich Content */}
-          <div className="lg:col-span-6 flex flex-col justify-center h-full py-2 space-y-4">
+          {/* Left Column (50% Width) - Neatly grouped content */}
+          <div className="lg:col-span-6 flex flex-col justify-center space-y-4 sm:space-y-5 lg:space-y-6 py-1 my-auto">
 
             {/* Top Header Block */}
             <div className="space-y-2">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#2d6a4f]/15 border border-[#2d6a4f]/40 text-[#2d6a4f] text-xs font-roboto font-bold uppercase tracking-widest shadow-sm">
-                <Sparkles className="w-3.5 h-3.5 text-[#2d6a4f]" />
-                <span>About Ajay Homes & Estates</span>
-              </div>
-
-              <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif-luxury font-normal text-[#160d02] tracking-tight leading-[1.08]">
+              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-serif-luxury font-normal text-[#160d02] tracking-tight leading-[1.08]">
                 Made for{' '}
                 <span className="font-serif-luxury text-[#160d02] inline-block">
                   everyday living
                 </span>
               </h2>
 
-              <p className="text-sm sm:text-base font-roboto font-normal text-[#160d02]/85 leading-relaxed max-w-xl">
+              <p className="text-xs sm:text-sm lg:text-base font-roboto font-normal text-[#160d02]/85 leading-relaxed max-w-xl">
                 One of the fastest growing construction firms in Chennai. We specialize in constructing quality buildings with customized solutions for thousands of happy families.
               </p>
             </div>
 
+            {/* Mobile Phase Selector Tabs (visible on < lg screens) */}
+            <div className="flex lg:hidden items-center gap-2 overflow-x-auto pb-1 pt-1 scrollbar-none">
+              {phases.map((phase, idx) => (
+                <button
+                  key={phase.id}
+                  onClick={() => setActiveIdx(idx)}
+                  className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
+                    activeIdx === idx
+                      ? 'bg-[#2d6a4f] text-white shadow-md scale-102'
+                      : 'bg-white/80 text-[#160d02]/70 hover:bg-white border border-black/5'
+                  }`}
+                >
+                  0{idx + 1}. {phase.title.split(' ')[0]}
+                </button>
+              ))}
+            </div>
+
             {/* Middle Content Layout: Left Sub-column (Rich Text & Animated Checklist) + Right Sub-column (Card Image) */}
-            <div className="grid grid-cols-1 sm:grid-cols-12 gap-5 items-center pt-1">
+            <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 items-center">
 
               {/* Left Sub-column (7 cols): Animated Content synced to active scroll phase */}
-              <div className="sm:col-span-7 space-y-3.5">
+              <div className="sm:col-span-7 space-y-3">
 
                 {/* Philosophy Quote Badge */}
-                <div className="p-3.5 rounded-xl bg-white/85 border-l-4 border-[#2d6a4f] shadow-md backdrop-blur-md">
-                  <span className="text-xs font-roboto font-black text-[#2d6a4f] uppercase tracking-wider block mb-0.5">Our Philosophy</span>
-                  <p className="text-sm sm:text-base italic text-[#160d02] font-serif-luxury font-semibold">"Our customers are our ambassadors."</p>
+                <div className="p-3 sm:p-3.5 rounded-xl bg-white/85 border-l-4 border-[#2d6a4f] shadow-md backdrop-blur-md">
+                  <span className="text-[11px] sm:text-xs font-roboto font-black text-[#2d6a4f] uppercase tracking-wider block mb-0.5">Our Philosophy</span>
+                  <p className="text-xs sm:text-sm lg:text-base italic text-[#160d02] font-serif-luxury font-semibold">"Our customers are our ambassadors."</p>
                 </div>
 
                 {/* Dynamic Animated Content Container synced with activeIdx */}
-                <div className="min-h-[160px] relative overflow-hidden">
+                <div className="min-h-[120px] sm:min-h-[150px] relative overflow-hidden">
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={phases[activeIdx].id}
@@ -125,18 +137,18 @@ export const EverydayLivingSection = () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -15 }}
                       transition={{ duration: 0.4, ease: 'easeOut' }}
-                      className="space-y-3"
+                      className="space-y-2 sm:space-y-2.5"
                     >
-                      <h3 className="text-base sm:text-lg font-roboto font-bold text-[#160d02]">
+                      <h3 className="text-sm sm:text-base font-roboto font-bold text-[#160d02]">
                         {phases[activeIdx].title}
                       </h3>
 
-                      <p className="text-xs sm:text-sm font-roboto font-normal text-[#160d02]/85 leading-relaxed">
+                      <p className="text-xs sm:text-sm text-[#160d02]/85 leading-relaxed">
                         {phases[activeIdx].desc}
                       </p>
 
                       {/* Checklist items */}
-                      <ul className="space-y-1.5 pt-1 text-xs sm:text-sm font-roboto font-semibold text-[#160d02]">
+                      <ul className="space-y-1.5 pt-0.5 text-xs sm:text-sm font-roboto font-semibold text-[#160d02]">
                         {phases[activeIdx].checklist.map((item, i) => (
                           <motion.li
                             key={i}
@@ -145,7 +157,7 @@ export const EverydayLivingSection = () => {
                             transition={{ delay: i * 0.1, duration: 0.3 }}
                             className="flex items-center gap-2"
                           >
-                            <CheckCircle2 className="w-4 h-4 text-[#2d6a4f] flex-shrink-0" />
+                            <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#2d6a4f] flex-shrink-0" />
                             <span>{item}</span>
                           </motion.li>
                         ))}
@@ -157,8 +169,8 @@ export const EverydayLivingSection = () => {
               </div>
 
               {/* Right Sub-column (5 cols): Feature Image Card Container with Cross-fading Images */}
-              <div className="sm:col-span-5 flex justify-center sm:justify-end">
-                <div className="w-full max-w-[220px] sm:max-w-full aspect-[3/4] overflow-hidden shadow-2xl rounded-2xl border-2 border-white bg-[#e0d6cb] relative group">
+              <div className="sm:col-span-5 flex justify-center sm:justify-end pt-2 sm:pt-0">
+                <div className="w-full max-w-[260px] sm:max-w-full aspect-[4/3] overflow-hidden shadow-xl rounded-2xl border-2 border-[#2d6a4f] bg-[#e0d6cb] relative group">
                   {phases.map((phase, idx) => (
                     <motion.img
                       key={`card-img-${phase.id}`}
@@ -181,25 +193,25 @@ export const EverydayLivingSection = () => {
             </div>
 
             {/* Bottom Stats Strip */}
-            <div className="grid grid-cols-3 gap-3 pt-2.5 border-t border-black/10">
-              <div className="p-3 rounded-xl bg-white/80 border border-black/5 text-center shadow-sm">
-                <span className="font-roboto font-black text-xl sm:text-2xl text-[#FE9601] block">1000+</span>
-                <span className="text-xs font-roboto font-bold text-[#160d02]/80 uppercase tracking-wider block mt-0.5">Happy Families</span>
+            <div className="grid grid-cols-3 gap-2 sm:gap-3 pt-3 border-t border-black/10">
+              <div className="p-2 sm:p-3 rounded-xl bg-white/80 border border-black/5 text-center shadow-sm">
+                <span className="font-roboto font-black text-base sm:text-2xl text-[#FE9601] block">1000+</span>
+                <span className="text-[9px] sm:text-xs font-roboto font-bold text-[#160d02]/80 uppercase tracking-wider block mt-0.5">Happy Families</span>
               </div>
-              <div className="p-3 rounded-xl bg-white/80 border border-black/5 text-center shadow-sm">
-                <span className="font-roboto font-black text-xl sm:text-2xl text-[#FE9601] block">120+</span>
-                <span className="text-xs font-roboto font-bold text-[#160d02]/80 uppercase tracking-wider block mt-0.5">Projects Done</span>
+              <div className="p-2 sm:p-3 rounded-xl bg-white/80 border border-black/5 text-center shadow-sm">
+                <span className="font-roboto font-black text-base sm:text-2xl text-[#FE9601] block">120+</span>
+                <span className="text-[9px] sm:text-xs font-roboto font-bold text-[#160d02]/80 uppercase tracking-wider block mt-0.5">Projects Done</span>
               </div>
-              <div className="p-3 rounded-xl bg-white/80 border border-black/5 text-center shadow-sm">
-                <span className="font-roboto font-black text-xl sm:text-2xl text-[#FE9601] block">20+ Yrs</span>
-                <span className="text-xs font-roboto font-bold text-[#160d02]/80 uppercase tracking-wider block mt-0.5">Heritage</span>
+              <div className="p-2 sm:p-3 rounded-xl bg-white/80 border border-black/5 text-center shadow-sm">
+                <span className="font-roboto font-black text-base sm:text-2xl text-[#FE9601] block">20+ Yrs</span>
+                <span className="text-[9px] sm:text-xs font-roboto font-bold text-[#160d02]/80 uppercase tracking-wider block mt-0.5">Heritage</span>
               </div>
             </div>
 
           </div>
 
-          {/* Right Column - Tall Vertical Image Container */}
-          <div className="lg:col-span-6 h-[88vh] sm:h-[92vh] overflow-hidden relative shadow-2xl bg-[#e0d6cb] rounded-none border border-black/10">
+          {/* Right Column - Showcase Vertical Image Container (Responsive for mobile & desktop) */}
+          <div className="lg:col-span-6 h-[300px] sm:h-[420px] lg:h-[88vh] overflow-hidden relative shadow-2xl bg-[#e0d6cb] rounded-2xl lg:rounded-none border border-black/10">
 
             {/* Slide 1 Image - Base Layer */}
             <div className="absolute inset-0 w-full h-full">
@@ -210,9 +222,11 @@ export const EverydayLivingSection = () => {
               />
             </div>
 
-            {/* Slide 2 Image - Slides UP over Slide 1 */}
+            {/* Slide 2 Image - Crossfades on mobile or slides UP on desktop */}
             <motion.div
               style={{ y: rightImgY2 }}
+              animate={{ opacity: activeIdx >= 1 ? 1 : 0 }}
+              transition={{ duration: 0.5 }}
               className="absolute inset-0 w-full h-full"
             >
               <img
@@ -222,9 +236,11 @@ export const EverydayLivingSection = () => {
               />
             </motion.div>
 
-            {/* Slide 3 Image - Slides UP over Slide 2 */}
+            {/* Slide 3 Image - Crossfades on mobile or slides UP on desktop */}
             <motion.div
               style={{ y: rightImgY3 }}
+              animate={{ opacity: activeIdx >= 2 ? 1 : 0 }}
+              transition={{ duration: 0.5 }}
               className="absolute inset-0 w-full h-full"
             >
               <img

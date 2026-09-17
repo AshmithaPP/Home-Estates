@@ -90,10 +90,10 @@ export const Hero = () => {
       />
 
       {/* Main Hero Layout Container - Flush Left End */}
-      <div className="relative z-20 max-w-[1800px] mx-auto w-full px-6 sm:px-12 pt-20 sm:pt-28 pb-8 flex-1 flex flex-col justify-between">
+      <div className="relative z-20 max-w-[1800px] mx-auto w-full px-4 sm:px-12 pt-14 xs:pt-16 sm:pt-28 pb-4 sm:pb-8 flex-1 flex flex-col justify-between overflow-hidden">
 
         {/* Left End Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end my-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-8 items-end my-auto">
           <div className="lg:col-span-7 xl:col-span-6 text-left">
             <HeroContent activeSlide={activeSlide} />
           </div>
@@ -101,7 +101,7 @@ export const Hero = () => {
         </div>
 
         {/* Bottom Controls Bar: Bottom-Right Image Thumbnails */}
-        <div className="pt-4 flex flex-col sm:flex-row items-center justify-end gap-4 border-t border-white/15">
+        <div className="pt-2 sm:pt-4 flex flex-col sm:flex-row items-center justify-center sm:justify-end gap-2 sm:gap-4 border-t border-white/15">
 
           {/* Screenshot 1 Replica: Bottom Right Image Thumbnails */}
           <ImageThumbnails

@@ -52,63 +52,63 @@ export const ContactSection = () => {
             className="lg:col-span-6 flex flex-col justify-between pr-0 lg:pr-4 space-y-6"
           >
             <div>
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-roboto text-[#160d02] tracking-tight leading-none">
+              <h2 className="text-5xl sm:text-6xl lg:text-6xl font-bold font-roboto text-[#160d02] tracking-tight leading-none">
                 Contact us
               </h2>
 
               {/* Tagline */}
-              <h3 className="mt-4 text-base sm:text-lg font-bold font-roboto text-[#160d02] tracking-tight">
+              <h3 className="mt-4 text-lg sm:text-xl lg:text-2xl font-bold font-roboto text-[#160d02] tracking-tight">
                 One of the Fastest Growing Construction Firms in Chennai
               </h3>
 
               {/* Subtitle Description */}
-              <p className="mt-2.5 text-xs sm:text-sm font-roboto text-[#666057] leading-relaxed max-w-lg">
+              <p className="mt-3 text-sm sm:text-base font-roboto text-[#4a453f] leading-relaxed max-w-xl">
                 Ajay Homes offers the most desired, fully developed residential flats in and around Chennai. We specialize in constructing quality buildings and offer customized solutions for our clients.
               </p>
 
               {/* Highlights Bullet List */}
-              <ul className="mt-5 space-y-2 text-xs sm:text-sm font-roboto text-[#160d02] font-semibold">
-                <li className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#2d6a4f] flex-shrink-0 mt-0.5" />
+              <ul className="mt-6 space-y-3 text-sm sm:text-base font-roboto text-[#160d02] font-bold">
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#2d6a4f] flex-shrink-0 mt-0.5" />
                   <span>Families of thousands stand testimony to our heritage of quality housing and value for money.</span>
                 </li>
-                <li className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#2d6a4f] flex-shrink-0 mt-0.5" />
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#2d6a4f] flex-shrink-0 mt-0.5" />
                   <span>Customized construction solutions tailored to every client's needs.</span>
                 </li>
-                <li className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#2d6a4f] flex-shrink-0 mt-0.5" />
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#2d6a4f] flex-shrink-0 mt-0.5" />
                   <span>Fully developed residential flats in prime Chennai locations.</span>
                 </li>
               </ul>
             </div>
 
             {/* Bottom 2-Column Details: Our Address & Contact Us */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-5 border-t border-[#160d02]/10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-[#160d02]/15">
               
               {/* Address sub-col */}
               <div>
-                <h3 className="text-sm sm:text-base font-bold font-roboto text-[#160d02] mb-1.5">
+                <h3 className="text-base sm:text-lg font-bold font-roboto text-[#160d02] mb-2">
                   Our Address
                 </h3>
-                <p className="text-xs sm:text-sm font-roboto text-[#706a61] leading-relaxed">
+                <p className="text-sm sm:text-base font-roboto text-[#524c45] leading-relaxed">
                   Ajay Homes & Estates, Plot No. 42, Prime Luxury Avenue, Anna Nagar West, Chennai, Tamil Nadu - 600040.
                 </p>
               </div>
 
               {/* Contact Us sub-col */}
               <div>
-                <h3 className="text-sm sm:text-base font-bold font-roboto text-[#160d02] mb-1.5">
+                <h3 className="text-base sm:text-lg font-bold font-roboto text-[#160d02] mb-2">
                   Contact Us
                 </h3>
-                <div className="space-y-1.5 text-xs sm:text-sm font-roboto text-[#706a61]">
+                <div className="space-y-2 text-sm sm:text-base font-roboto text-[#524c45]">
                   <div className="flex items-center gap-2">
-                    <span>+91 98400 12345</span>
-                    <MessageSquare className="w-3.5 h-3.5 text-[#2d6a4f] stroke-[2]" />
+                    <span className="font-semibold">+91 98400 12345</span>
+                    <MessageSquare className="w-4 h-4 text-[#2d6a4f] stroke-[2]" />
                   </div>
                   <div className="flex items-center gap-2">
-                    <span>info@ajayhomes.in</span>
-                    <MessageSquare className="w-3.5 h-3.5 text-[#2d6a4f] stroke-[2]" />
+                    <span className="font-semibold">info@ajayhomes.in</span>
+                    <MessageSquare className="w-4 h-4 text-[#2d6a4f] stroke-[2]" />
                   </div>
                 </div>
               </div>
@@ -124,8 +124,8 @@ export const ContactSection = () => {
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-6"
           >
-            {/* Solid Framed Taupe Container Box matching screenshot style */}
-            <div className="bg-[#bfae9c] p-6 sm:p-10 shadow-lg">
+            {/* Solid Framed Accent Green Container Box */}
+            <div className="bg-[#2d6a4f] p-6 sm:p-10 shadow-xl rounded-2xl border border-[#2d6a4f]/20">
               
               {submitted ? (
                 <div className="bg-white p-10 text-center space-y-4 shadow-inner min-h-[360px] flex flex-col items-center justify-center">
@@ -149,7 +149,7 @@ export const ContactSection = () => {
                       value={formData.fullName}
                       onChange={handleChange}
                       placeholder="Full name"
-                      className="w-full bg-white px-5 py-4 text-sm font-roboto text-[#160d02] placeholder:text-[#a09a90] border-none outline-none focus:ring-2 focus:ring-[#FE9601] transition-all"
+                      className="w-full bg-white px-5 py-4 rounded-xl text-sm font-roboto text-[#160d02] placeholder:text-gray-400 border-none outline-none focus:ring-2 focus:ring-[#FE9601] transition-all shadow-sm"
                     />
                   </div>
 
@@ -162,7 +162,7 @@ export const ContactSection = () => {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="Your email"
-                      className="w-full bg-white px-5 py-4 text-sm font-roboto text-[#160d02] placeholder:text-[#a09a90] border-none outline-none focus:ring-2 focus:ring-[#FE9601] transition-all"
+                      className="w-full bg-white px-5 py-4 rounded-xl text-sm font-roboto text-[#160d02] placeholder:text-gray-400 border-none outline-none focus:ring-2 focus:ring-[#FE9601] transition-all shadow-sm"
                     />
                   </div>
 
@@ -175,7 +175,7 @@ export const ContactSection = () => {
                       value={formData.subject}
                       onChange={handleChange}
                       placeholder="Type a subject (e.g. 3BHK Flat, Joint Venture)"
-                      className="w-full bg-white px-5 py-4 text-sm font-roboto text-[#160d02] placeholder:text-[#a09a90] border-none outline-none focus:ring-2 focus:ring-[#FE9601] transition-all"
+                      className="w-full bg-white px-5 py-4 rounded-xl text-sm font-roboto text-[#160d02] placeholder:text-gray-400 border-none outline-none focus:ring-2 focus:ring-[#FE9601] transition-all shadow-sm"
                     />
                   </div>
 
@@ -188,7 +188,7 @@ export const ContactSection = () => {
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="Type a message..."
-                      className="w-full bg-white px-5 py-4 text-sm font-roboto text-[#160d02] placeholder:text-[#a09a90] border-none outline-none focus:ring-2 focus:ring-[#FE9601] transition-all resize-none"
+                      className="w-full bg-white px-5 py-4 rounded-xl text-sm font-roboto text-[#160d02] placeholder:text-gray-400 border-none outline-none focus:ring-2 focus:ring-[#FE9601] transition-all resize-none shadow-sm"
                     />
                   </div>
 
@@ -196,7 +196,7 @@ export const ContactSection = () => {
                   <div className="pt-2">
                     <button
                       type="submit"
-                      className="w-full py-4 bg-[#2b2725] text-white font-roboto font-bold text-base hover:bg-[#FE9601] hover:text-[#0c0d10] transition-colors duration-200 cursor-pointer shadow-md"
+                      className="w-full py-4 bg-[#0c0d10] text-white rounded-xl font-roboto font-bold text-base hover:bg-[#FE9601] hover:text-[#0c0d10] transition-colors duration-200 cursor-pointer shadow-md"
                     >
                       Submit
                     </button>

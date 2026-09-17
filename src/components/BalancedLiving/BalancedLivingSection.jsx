@@ -20,11 +20,6 @@ export const BalancedLivingSection = ({ onOpenApply }) => {
 
         {/* Centered Headline */}
         <div className="text-center max-w-2xl mx-auto space-y-1 select-none">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#2d6a4f]/15 border border-[#2d6a4f]/40 text-[#2d6a4f] text-xs font-roboto font-bold uppercase tracking-wider mb-2">
-            <Sparkles className="w-3.5 h-3.5 text-[#2d6a4f]" />
-            <span>Luxury Floorplans</span>
-          </div>
-
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif-luxury font-normal text-[#160d02] tracking-tight leading-snug">
             Where luxury living
           </h2>
@@ -100,8 +95,8 @@ export const BalancedLivingSection = ({ onOpenApply }) => {
                   <h3 className="font-serif-luxury font-bold text-base sm:text-lg text-[#160d02]">
                     {plan.title}
                   </h3>
-                  <div className="px-2 py-0.5 rounded-full bg-[#FFF5E3] border border-[#FE9601]/40 text-[#160d02] font-bold text-xs">
-                    <span className="text-[#FE9601] font-normal">$</span> {plan.price}
+                  <div className="px-2.5 py-0.5 rounded-full bg-[#2d6a4f] text-white font-bold text-xs shadow-sm">
+                    <span className="text-white/90 font-normal">$</span> {plan.price}
                   </div>
                 </div>
 

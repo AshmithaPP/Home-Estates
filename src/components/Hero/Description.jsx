@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
  */
 export const Description = ({ text, slideId }) => {
   return (
-    <div className="min-h-[50px] sm:min-h-[65px] text-left">
+    <div className="min-h-0 sm:min-h-[65px] text-left">
       <AnimatePresence mode="wait">
         <motion.p
           key={`desc-${slideId}`}
@@ -15,7 +15,7 @@ export const Description = ({ text, slideId }) => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.45, delay: 0.2, ease: 'easeOut' }}
-          className="text-xs sm:text-sm text-white/90 font-normal max-w-md sm:max-w-lg leading-relaxed drop-shadow select-none"
+          className="text-[11px] sm:text-sm text-white/90 font-normal max-w-xs sm:max-w-lg leading-relaxed drop-shadow select-none"
         >
           {text}
         </motion.p>

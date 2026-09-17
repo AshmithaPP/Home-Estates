@@ -56,24 +56,19 @@ export const ScrollGallery = () => {
   const textOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0.4]);
 
   // Uniform dimensions for ALL 6 surrounding outer cards
-  const outerCardStyle = "w-32 sm:w-44 md:w-52 h-24 sm:h-32 md:h-38 aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border-2 border-white bg-white shadow-black/10";
+  const outerCardStyle = "w-32 sm:w-44 md:w-52 h-24 sm:h-32 md:h-38 aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border-2 border-[#2d6a4f] bg-white shadow-black/10";
 
   return (
     <div id="about" ref={containerRef} className="relative h-[220vh] bg-[#FFF5E3] text-[#160d02]">
       {/* Sticky Full-Viewport Stage */}
       <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-between overflow-hidden px-4 py-8">
 
-        {/* Screenshot 1: Reduced Centered Headline */}
+        {/* Headline Header Block */}
         <motion.div
           style={{ y: textY, opacity: textOpacity }}
-          className="z-30 text-center max-w-xl pt-6 select-none"
+          className="z-30 text-center max-w-xl pt-1 sm:pt-6 select-none px-2"
         >
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#2d6a4f]/15 border border-[#2d6a4f]/40 text-[#2d6a4f] text-xs font-roboto font-bold uppercase tracking-wider mb-3">
-            <span className="w-2 h-2 rounded-full bg-[#2d6a4f] animate-pulse" />
-            <span>Interactive Gallery</span>
-          </div>
-
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif-luxury font-normal text-[#160d02] tracking-tight leading-snug">
+          <h2 className="text-lg sm:text-4xl md:text-5xl font-serif-luxury font-normal text-[#160d02] tracking-tight leading-snug">
             Everything homes & estates living{' '}
             <span className="font-serif-luxury text-[#160d02] inline-block">
               should be
@@ -87,7 +82,7 @@ export const ScrollGallery = () => {
           {/* 1. Center Focal Card */}
           <motion.div
             style={{ scale: centerScale }}
-            className="z-20 w-44 sm:w-60 md:w-72 aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white shadow-black/20"
+            className="z-20 w-44 sm:w-60 md:w-72 aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border-4 border-[#2d6a4f] bg-white shadow-black/20"
           >
             <img
               src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop"

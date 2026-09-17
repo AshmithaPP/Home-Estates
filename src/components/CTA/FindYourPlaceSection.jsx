@@ -27,10 +27,6 @@ const FindYourPlaceSection = ({ onOpenTourModal }) => {
         >
           {/* Card Headline */}
           <div className="space-y-3">
-            <span className="text-[11px] uppercase tracking-[0.25em] text-[#2d6a4f] font-extrabold flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-[#2d6a4f] animate-pulse" />
-              Joint Venture Property Promotion
-            </span>
             <h2 className="text-3xl sm:text-5xl font-bold font-serif-luxury leading-[1.1] tracking-tight text-[#140c02]">
               Interested in promoting your property?
             </h2>

@@ -80,7 +80,7 @@ export const PropertyHighlights = ({ onOpenTour, onOpenApply }) => {
         {/* Banner CTA Card (Using Client's Requested Golden Gradient & Color Scheme) */}
         <div className="relative rounded-3xl p-8 sm:p-12 bg-gradient-to-r from-[#181a22] via-[#20222e] to-[#181a22] border border-[#ffc973]/30 overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8 shadow-2xl">
           <div className="space-y-4 max-w-xl text-center lg:text-left">
-            <span className="px-3.5 py-1 rounded-full bg-[#fe9601]/20 border border-[#fe9601] text-xs font-bold text-[#ffc973] uppercase tracking-wider">
+            <span className="px-3.5 py-1 rounded-full bg-[#2d6a4f] text-white text-xs font-bold uppercase tracking-wider shadow-sm">
               Limited Availability for Fall 2026
             </span>
             <h3 className="text-2xl sm:text-4xl font-serif-luxury font-bold text-white">

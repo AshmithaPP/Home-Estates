@@ -12,10 +12,11 @@
   * {
     padding: 0;
     margin: 0;
+    font-family: 'Montserrat', sans-serif;
   }
 
   body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: #0c0d10;
     color: #fff5e3;
     overflow-x: hidden;
@@ -23,16 +24,22 @@
 
   h1,
   h2,
-  .font-serif-luxury {
-    font-family: 'Playfair Display', serif;
-  }
-
-  .font-montserrat {
-    font-family: 'Montserrat', sans-serif;
-  }
-
-  .font-roboto {
-    font-family: 'Roboto', sans-serif;
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  span,
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  .font-serif-luxury,
+  .font-montserrat,
+  .font-roboto,
+  .font-sans {
+    font-family: 'Montserrat', sans-serif !important;
   }
 }
 
