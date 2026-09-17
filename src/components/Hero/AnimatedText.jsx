@@ -70,7 +70,7 @@ export const AnimatedText = ({ text, accentWord, className = '', slideId }) => {
                   exit="exit"
                   className={`inline-block ${
                     isAccent
-                      ? 'underline-brush text-transparent bg-clip-text bg-gradient-to-r from-[#fe9601] via-[#ffc973] to-[#fe9601] font-serif-luxury italic font-normal px-0.5'
+                      ? 'text-transparent bg-clip-text bg-gradient-to-r from-[#fe9601] via-[#ffc973] to-[#fe9601] font-serif-luxury italic font-normal px-0.5'
                       : 'text-white'
                   }`}
                   style={{

@@ -26,29 +26,34 @@ const FindYourPlaceSection = ({ onOpenTourModal }) => {
           className="w-full sm:w-[500px] md:w-[560px] bg-[#f2e6f9] text-[#120b02] rounded-3xl p-8 sm:p-12 flex flex-col justify-between shadow-2xl border border-white/40 relative overflow-hidden"
         >
           {/* Card Headline */}
-          <div>
-            <h2 className="text-4xl sm:text-6xl font-normal font-serif-luxury leading-[1.08] tracking-tight text-[#140c02]">
-              Find your place.
-              <br />
-              Make it yours.
+          <div className="space-y-3">
+            <span className="text-[11px] uppercase tracking-[0.25em] text-[#2d6a4f] font-extrabold flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-[#2d6a4f] animate-pulse" />
+              Joint Venture Property Promotion
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-bold font-serif-luxury leading-[1.1] tracking-tight text-[#140c02]">
+              Interested in promoting your property?
             </h2>
+            <p className="text-xs sm:text-sm text-[#140c02]/85 font-sans leading-relaxed pt-1">
+              Get the best offer in the market with Chennai's most trusted partner. Let's build value together — for your land and our legacy.
+            </p>
           </div>
 
           {/* Bottom Controls inside card */}
-          <div className="mt-8 pt-4 flex items-center justify-between">
+          <div className="mt-8 pt-4 flex items-center justify-between border-t border-black/10">
             {/* Button Group */}
             <div className="flex items-center gap-2">
               <button
                 onClick={onOpenTourModal}
-                className="bg-[#181109] hover:bg-black text-[#fff5e3] px-5 py-3 rounded-xl text-xs sm:text-sm font-semibold tracking-wide transition-all cursor-pointer shadow-md hover:scale-102 active:scale-98"
+                className="btn-gold-gradient px-6 py-3 rounded-xl text-xs sm:text-sm font-bold tracking-wide transition-all cursor-pointer shadow-md"
               >
-                Schedule a Tour
+                Get Best Offer
               </button>
               <button
                 onClick={onOpenTourModal}
-                className="w-10 h-10 rounded-xl bg-[#181109] hover:bg-black text-[#ffc973] flex items-center justify-center transition-all cursor-pointer shadow-md"
+                className="w-10 h-10 rounded-xl bg-[#2d6a4f] hover:bg-[#23533e] text-white flex items-center justify-center transition-all cursor-pointer shadow-md"
               >
-                <ArrowUpRight className="w-4 h-4" />
+                <ArrowUpRight className="w-4 h-4 text-white" />
               </button>
             </div>
 

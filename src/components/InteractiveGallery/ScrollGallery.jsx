@@ -59,7 +59,7 @@ export const ScrollGallery = () => {
   const outerCardStyle = "w-32 sm:w-44 md:w-52 h-24 sm:h-32 md:h-38 aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border-2 border-white bg-white shadow-black/10";
 
   return (
-    <div ref={containerRef} className="relative h-[220vh] bg-[#FFF5E3] text-[#160d02]">
+    <div id="about" ref={containerRef} className="relative h-[220vh] bg-[#FFF5E3] text-[#160d02]">
       {/* Sticky Full-Viewport Stage */}
       <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-between overflow-hidden px-4 py-8">
 
@@ -68,9 +68,14 @@ export const ScrollGallery = () => {
           style={{ y: textY, opacity: textOpacity }}
           className="z-30 text-center max-w-xl pt-6 select-none"
         >
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#2d6a4f]/15 border border-[#2d6a4f]/40 text-[#2d6a4f] text-xs font-roboto font-bold uppercase tracking-wider mb-3">
+            <span className="w-2 h-2 rounded-full bg-[#2d6a4f] animate-pulse" />
+            <span>Interactive Gallery</span>
+          </div>
+
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif-luxury font-normal text-[#160d02] tracking-tight leading-snug">
             Everything homes & estates living{' '}
-            <span className="underline-brush font-serif-luxury text-[#160d02] inline-block">
+            <span className="font-serif-luxury text-[#160d02] inline-block">
               should be
             </span>
           </h2>

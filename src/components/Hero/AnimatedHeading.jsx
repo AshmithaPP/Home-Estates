@@ -61,7 +61,7 @@ export const AnimatedHeading = ({ headingLine1, headingLine2, accentWord, slideI
                     animate="animate"
                     exit="exit"
                     className={`inline-block ${isAccent
-                        ? 'underline-brush text-transparent bg-clip-text bg-gradient-to-r from-[#FE9601] via-[#FFC973] to-[#FE9601] font-serif-luxury italic font-normal px-0.5'
+                        ? 'text-transparent bg-clip-text bg-gradient-to-r from-[#FE9601] via-[#FFC973] to-[#FE9601] font-serif-luxury italic font-normal px-0.5'
                         : 'text-white'
                       }`}
                     style={{ willChange: 'transform, opacity, filter' }}

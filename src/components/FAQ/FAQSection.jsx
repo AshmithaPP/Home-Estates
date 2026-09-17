@@ -5,45 +5,39 @@ import { ArrowUpRight } from 'lucide-react';
 const faqItems = [
   {
     id: '1',
-    question: 'How do I apply for an apartment?',
+    question: 'What makes Ajay Homes one of the fastest growing builders in Chennai?',
     answer:
-      'You can apply directly online through our digital portal by clicking "Apply Now" or scheduling a private consultation with our leasing team. The online form takes under 10 minutes to complete.'
+      'Thousands of happy families stand testimony to our heritage of quality housing, custom construction solutions, on-time delivery, and proven value for money across prime Chennai locations.'
   },
   {
     id: '2',
-    question: 'What does by-the-bed leasing mean?',
+    question: 'Can I customize the floorplan and interior finishes for my residential flat?',
     answer:
-      'By-the-bed leasing means you rent an individual bedroom and private bathroom within a multi-bedroom suite. You are only responsible for your individual lease contract, giving you complete financial independence.'
+      'Yes! We specialize in providing custom construction solutions tailored to every client\'s individual needs, including modular kitchen layouts, wood finishes, electrical layouts, and premium tile selections.'
   },
   {
     id: '3',
-    question: 'What do I need to apply?',
+    question: 'How does Joint Venture property promotion work with Ajay Homes?',
     answer:
-      'You will need a valid government-issued ID, proof of income or student enrollment status, emergency contact details, and contact info for a guarantor if applicable.'
+      'If you own land in or around Chennai, we partner with you via Joint Venture to construct luxury flats or villas. We offer the best market share/payout, complete legal transparency, and end-to-end project execution.'
   },
   {
     id: '4',
-    question: 'Do I need a guarantor?',
+    question: 'What locations in Chennai do you have active and completed projects in?',
     answer:
-      'If you do not meet our minimum income or credit requirements independently, a guarantor (such as a parent or guardian) can co-sign your lease agreement.'
+      'Our signature residential projects and gated communities are located in prime hubs including Velachery, OMR, Porur, Tambaram, Anna Nagar, and ECR.'
   },
   {
     id: '5',
-    question: 'How long does approval take?',
+    question: 'Are all Ajay Homes projects legally verified with clear titles?',
     answer:
-      'Most completed applications are reviewed and approved within 24 to 48 business hours once all supporting documentation and background checks are submitted.'
+      'Yes, 100%. Every project undergoes rigorous legal scrutiny by leading property advocates, securing all necessary CMDA / DTCP approvals, clear titles, and seamless bank loan eligibility.'
   },
   {
     id: '6',
-    question: 'Can I apply if I\'m not a student?',
+    question: 'What is the typical project completion timeline for custom construction?',
     answer:
-      'Yes! While our developments offer world-class student amenities, we welcome young professionals and individuals looking for premium estate living.'
-  },
-  {
-    id: '7',
-    question: 'How is rent paid?',
-    answer:
-      'Rent is paid conveniently through our resident portal via bank transfer, credit card, or automatic monthly ACH payments due on the 1st of each month.'
+      'We pride ourselves on promptness and on-time handovers. Most residential flat developments are completed within 12 to 18 months, with regular milestone progress updates for buyers.'
   }
 ];
 
@@ -59,6 +53,11 @@ const FAQSection = ({ onOpenTourModal, onOpenApply }) => {
       <div className="max-w-7xl mx-auto">
         {/* Main Headline - Centered, 2-line structure */}
         <div className="text-center mb-6 sm:mb-8">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#2d6a4f]/20 border border-[#2d6a4f]/50 text-[#2d6a4f] text-xs font-roboto font-bold uppercase tracking-wider mb-2">
+            <span className="w-2 h-2 rounded-full bg-[#2d6a4f] animate-pulse" />
+            <span>Help & Assistance</span>
+          </div>
+
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal tracking-tight text-white leading-snug font-serif-luxury">
             Frequently asked
             <br />
@@ -91,11 +90,11 @@ const FAQSection = ({ onOpenTourModal, onOpenApply }) => {
                       onClick={() => toggleAccordion(item.id)}
                       className="w-full text-left py-2.5 sm:py-3.5 flex items-center justify-between gap-4 cursor-pointer group"
                     >
-                      <span className="text-sm sm:text-lg font-normal text-white/90 group-hover:text-[#ffc973] transition-colors leading-snug">
+                      <span className="text-sm sm:text-lg font-normal text-white/90 group-hover:text-[#2d6a4f] transition-colors leading-snug">
                         {item.question}
                       </span>
                       <span
-                        className={`text-lg sm:text-xl font-light text-white/70 group-hover:text-white transition-transform duration-300 flex-shrink-0 ${isOpen ? 'rotate-45 text-[#fe9601]' : ''
+                        className={`text-lg sm:text-xl font-light text-white/70 group-hover:text-[#2d6a4f] transition-transform duration-300 flex-shrink-0 ${isOpen ? 'rotate-45 text-[#2d6a4f]' : ''
                           }`}
                       >
                         +

@@ -1,31 +1,31 @@
 export const heroSlidesData = [
   {
     id: 1,
-    eyebrow: "Comfort in every corner",
-    headingLine1: "Live better,",
-    accentWord: "better,",
-    headingLine2: "closer to USC",
-    description: "Freshly renovated and upgraded Minutes from Williams-Brice Designed for focused mornings, long nights, and balanced student living",
+    eyebrow: "Chennai's Fastest Growing Construction Firm",
+    headingLine1: "Building Dreams,",
+    accentWord: "Quality Homes",
+    headingLine2: "Crafting Quality Homes",
+    description: "Welcome to Ajay Homes & Estates — the most desired, fully developed residential flats in and around Chennai. We specialize in constructing quality buildings with customized solutions for our clients.",
     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2000&auto=format&fit=crop",
     thumbnail: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=400&auto=format&fit=crop"
   },
   {
     id: 2,
-    eyebrow: "Resort style amenities",
-    headingLine1: "Elevate your sanctuary,",
-    accentWord: "sanctuary,",
-    headingLine2: "live in luxury",
-    description: "Private balconies, bespoke interior architecture, and state-of-the-art facilities tailored to your modern lifestyle",
+    eyebrow: "Heritage of Quality Housing & Value for Money",
+    headingLine1: "Customized Living,",
+    accentWord: "Prime Locations",
+    headingLine2: "In Prime Chennai Hubs",
+    description: "Thousands of happy families stand testimony to our heritage of quality housing. From Velachery to OMR, Porur & Tambaram, we deliver clear titles, CMDA approvals, and on-time handovers.",
     image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2000&auto=format&fit=crop",
     thumbnail: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=400&auto=format&fit=crop"
   },
   {
     id: 3,
-    eyebrow: "Unmatched estate views",
-    headingLine1: "Timeless elegance,",
-    accentWord: "elegance,",
-    headingLine2: "reimagined for you",
-    description: "Prime location, top-tier security, and ultra-comfortable spaces designed for luxury living in the heart of the city",
+    eyebrow: "Trusted Joint Venture Partner in Chennai",
+    headingLine1: "Promote Your Land,",
+    accentWord: "Best Market Share",
+    headingLine2: "With Best Market Share",
+    description: "Turn your property into luxury flats or villas with Chennai's most trusted partner. Complete legal transparency, superior market payout, and end-to-end execution guaranteed.",
     image: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?q=80&w=2000&auto=format&fit=crop",
     thumbnail: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?q=80&w=400&auto=format&fit=crop"
   }

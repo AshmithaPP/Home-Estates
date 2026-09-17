@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDownRight, Bed, Bath, Move } from 'lucide-react';
+import { ArrowDownRight, Bed, Bath, Move, Sparkles } from 'lucide-react';
 import { floorplansData } from '../../data/floorplansData';
 
 /**
@@ -10,22 +10,27 @@ import { floorplansData } from '../../data/floorplansData';
  */
 export const BalancedLivingSection = ({ onOpenApply }) => {
   return (
-    <section className="relative w-full py-20 px-4 sm:px-6 md:px-8 bg-[#FFF5E3] text-[#160d02] overflow-hidden">
-      
+    <section id="gallery" className="relative w-full py-20 px-4 sm:px-6 md:px-8 bg-[#FFF5E3] text-[#160d02] overflow-hidden">
+
       {/* Background Ambient Glows */}
       <div className="absolute top-10 left-10 w-96 h-96 bg-[#FE9601]/5 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#FFC973]/10 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-[1800px] mx-auto space-y-10 relative z-10">
-        
+
         {/* Centered Headline */}
         <div className="text-center max-w-2xl mx-auto space-y-1 select-none">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#2d6a4f]/15 border border-[#2d6a4f]/40 text-[#2d6a4f] text-xs font-roboto font-bold uppercase tracking-wider mb-2">
+            <Sparkles className="w-3.5 h-3.5 text-[#2d6a4f]" />
+            <span>Luxury Floorplans</span>
+          </div>
+
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif-luxury font-normal text-[#160d02] tracking-tight leading-snug">
             Where luxury living
           </h2>
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif-luxury font-normal text-[#160d02] tracking-tight leading-snug">
             feels{' '}
-            <span className="underline-brush font-serif-luxury text-[#160d02] inline-block">
+            <span className="font-serif-luxury text-[#160d02] inline-block">
               balanced
             </span>
           </h2>
@@ -56,7 +61,7 @@ export const BalancedLivingSection = ({ onOpenApply }) => {
               className="bg-white p-3.5 sm:p-4 rounded-2xl shadow-[0_12px_30px_rgba(0,0,0,0.06)] hover:shadow-[0_22px_45px_rgba(254,150,1,0.25)] border border-[#160d02]/10 flex flex-col justify-between transition-shadow duration-300 cursor-pointer group"
             >
               <div className="space-y-3">
-                
+
                 {/* Image Container with Available Status Badge */}
                 <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-[#f4ece1]">
                   <img
@@ -65,9 +70,9 @@ export const BalancedLivingSection = ({ onOpenApply }) => {
                     className="w-full h-full object-cover group-hover:scale-106 transition-transform duration-500"
                   />
 
-                  {/* Available Tag in Primary Orange */}
+                  {/* Available Tag in Helper Green #2d6a4f */}
                   {plan.available && (
-                    <div className="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-[#FE9601] text-white text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 shadow-md">
+                    <div className="absolute top-2 left-2 px-2.5 py-1 rounded-md bg-[#2d6a4f] text-white text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 shadow-md">
                       <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                       <span>Available</span>
                     </div>

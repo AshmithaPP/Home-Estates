@@ -1,10 +1,11 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useMotionValueEvent, AnimatePresence } from 'framer-motion';
+import { Sparkles, CheckCircle2, Award, Users, Building2 } from 'lucide-react';
 
 /**
  * EverydayLivingSection Component
- * Uses AnimatePresence + activeIdx scroll event tracking to prevent text collision
- * and maintain crisp, clean typography with proper grid spacing.
+ * Completely fills the left side gap with rich brand story content, philosophy quote box,
+ * animated phase transition checklists, and stat badges.
  */
 export const EverydayLivingSection = () => {
   const sectionRef = useRef(null);
@@ -31,106 +32,176 @@ export const EverydayLivingSection = () => {
   const phases = [
     {
       id: 1,
-      title: 'Private space',
-      desc: 'Your space to reset and focus',
+      title: 'Customized Construction Solutions',
+      tagline: 'Heritage of Quality Housing',
+      desc: 'Tailored floorplans, teakwood doors, granite flooring, and modular fittings designed to your exact family needs across prime Chennai hubs.',
+      checklist: [
+        '1000+ Happy families across Chennai',
+        'Customized floorplans & interior finishes',
+        'Prime hubs: Velachery, OMR, Porur & Tambaram'
+      ],
       cardImg: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?q=80&w=800&auto=format&fit=crop',
       mainImg: 'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?q=80&w=1200&auto=format&fit=crop',
     },
     {
       id: 2,
-      title: 'Curated interiors',
-      desc: 'Designed for modern comfort and ease',
+      title: 'Crafted Interior Architecture',
+      tagline: 'Modularity & Modern Comfort',
+      desc: 'Space-optimizing kitchens, custom wardrobes, ambient ceiling lighting, and elegant living rooms engineered for luxury and longevity.',
+      checklist: [
+        'Bespoke modular kitchen layouts',
+        'Custom teakwood & glass woodwork',
+        'Living spaces engineered for luxury'
+      ],
       cardImg: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop',
       mainImg: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop',
     },
     {
       id: 3,
-      title: 'Resort amenities',
-      desc: 'Expansive views and dedicated service',
+      title: 'Legal Scrutiny & Clear Titles',
+      tagline: '100% Peace of Mind Guarantee',
+      desc: 'Full CMDA / DTCP approvals, verified legal titles, on-time project delivery, and seamless bank loan eligibility for every home.',
+      checklist: [
+        '100% CMDA & DTCP legal approvals',
+        'Verified titles by leading advocates',
+        'On-time delivery with zero compromises'
+      ],
       cardImg: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=800&auto=format&fit=crop',
       mainImg: 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?q=80&w=1200&auto=format&fit=crop',
     },
   ];
 
   // Right-side image scroll Y-transforms (Stacked Overlay approach so background NEVER turns blank)
-  // Image 1 is always base at 0%
-  // Image 2 slides up over Image 1 between scroll 0.25 and 0.55
   const rightImgY2 = useTransform(scrollYProgress, [0.25, 0.55], ['100%', '0%']);
-  // Image 3 slides up over Image 2 between scroll 0.60 and 0.90
   const rightImgY3 = useTransform(scrollYProgress, [0.60, 0.90], ['100%', '0%']);
 
   return (
-    <div ref={sectionRef} className="relative h-[250vh] bg-[#FFF5E3] text-[#160d02]">
+    <div id="interior" ref={sectionRef} className="relative h-[250vh] bg-[#FFF5E3] text-[#160d02]">
       {/* Sticky Full-Viewport Stage */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between px-6 sm:px-12 py-6 max-w-[1800px] mx-auto">
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center h-full my-auto">
-          
-          {/* Left Column (50% Width) */}
-          <div className="lg:col-span-6 flex flex-col justify-center h-full py-4 space-y-4">
-            
-            {/* Top Headline */}
-            <div className="space-y-1">
-              <h2 className="text-4xl sm:text-6xl md:text-7xl font-serif-luxury font-normal text-[#160d02] tracking-tight leading-[1.08]">
-                Made for
-              </h2>
-              <h2 className="text-4xl sm:text-6xl md:text-7xl font-serif-luxury font-normal text-[#160d02] tracking-tight leading-[1.08]">
-                <span className="underline-brush font-serif-luxury text-[#160d02] inline-block">
+
+          {/* Left Column (50% Width) - Packed with Rich Content */}
+          <div className="lg:col-span-6 flex flex-col justify-center h-full py-2 space-y-4">
+
+            {/* Top Header Block */}
+            <div className="space-y-2">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#2d6a4f]/15 border border-[#2d6a4f]/40 text-[#2d6a4f] text-xs font-roboto font-bold uppercase tracking-widest shadow-sm">
+                <Sparkles className="w-3.5 h-3.5 text-[#2d6a4f]" />
+                <span>About Ajay Homes & Estates</span>
+              </div>
+
+              <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif-luxury font-normal text-[#160d02] tracking-tight leading-[1.08]">
+                Made for{' '}
+                <span className="font-serif-luxury text-[#160d02] inline-block">
                   everyday living
                 </span>
               </h2>
+
+              <p className="text-sm sm:text-base font-roboto font-normal text-[#160d02]/85 leading-relaxed max-w-xl">
+                One of the fastest growing construction firms in Chennai. We specialize in constructing quality buildings with customized solutions for thousands of happy families.
+              </p>
             </div>
 
-            {/* Feature Image Card + Content Below */}
-            <div className="flex flex-col items-end pr-2 sm:pr-6 pt-2 space-y-2">
-              
-              {/* Short Feature Image Container - Cross-Fading to Prevent White Blank Gaps */}
-              <div className="w-64 sm:w-80 lg:w-96 h-72 sm:h-96 lg:h-[420px] overflow-hidden shadow-2xl bg-[#e0d6cb] rounded-none border border-black/10 relative">
-                {phases.map((phase, idx) => (
-                  <motion.img
-                    key={`card-img-${phase.id}`}
-                    src={phase.cardImg}
-                    alt={phase.title}
-                    initial={false}
-                    animate={{ opacity: activeIdx === idx ? 1 : 0 }}
-                    transition={{ duration: 0.5, ease: 'easeInOut' }}
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                ))}
-              </div>
+            {/* Middle Content Layout: Left Sub-column (Rich Text & Animated Checklist) + Right Sub-column (Card Image) */}
+            <div className="grid grid-cols-1 sm:grid-cols-12 gap-5 items-center pt-1">
 
-              {/* Content Below Short Image (Dot + Title + Subtext) - Single Active Text Container */}
-              <div className="w-64 sm:w-80 lg:w-96 space-y-1 pt-1 text-left relative h-16">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={`text-${phases[activeIdx].id}`}
-                    initial={{ opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -6 }}
-                    transition={{ duration: 0.25, ease: 'easeOut' }}
-                    className="absolute inset-0 space-y-0.5"
-                  >
-                    <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#FE9601]" />
-                      <h4 className="font-serif-luxury font-bold text-sm sm:text-base text-[#160d02]">
+              {/* Left Sub-column (7 cols): Animated Content synced to active scroll phase */}
+              <div className="sm:col-span-7 space-y-3.5">
+
+                {/* Philosophy Quote Badge */}
+                <div className="p-3.5 rounded-xl bg-white/85 border-l-4 border-[#2d6a4f] shadow-md backdrop-blur-md">
+                  <span className="text-xs font-roboto font-black text-[#2d6a4f] uppercase tracking-wider block mb-0.5">Our Philosophy</span>
+                  <p className="text-sm sm:text-base italic text-[#160d02] font-serif-luxury font-semibold">"Our customers are our ambassadors."</p>
+                </div>
+
+                {/* Dynamic Animated Content Container synced with activeIdx */}
+                <div className="min-h-[160px] relative overflow-hidden">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={phases[activeIdx].id}
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -15 }}
+                      transition={{ duration: 0.4, ease: 'easeOut' }}
+                      className="space-y-3"
+                    >
+                      <h3 className="text-base sm:text-lg font-roboto font-bold text-[#160d02]">
                         {phases[activeIdx].title}
-                      </h4>
-                    </div>
-                    <p className="text-xs sm:text-sm text-[#160d02]/75 font-sans pl-3.5">
-                      {phases[activeIdx].desc}
-                    </p>
-                  </motion.div>
-                </AnimatePresence>
+                      </h3>
+
+                      <p className="text-xs sm:text-sm font-roboto font-normal text-[#160d02]/85 leading-relaxed">
+                        {phases[activeIdx].desc}
+                      </p>
+
+                      {/* Checklist items */}
+                      <ul className="space-y-1.5 pt-1 text-xs sm:text-sm font-roboto font-semibold text-[#160d02]">
+                        {phases[activeIdx].checklist.map((item, i) => (
+                          <motion.li
+                            key={i}
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: i * 0.1, duration: 0.3 }}
+                            className="flex items-center gap-2"
+                          >
+                            <CheckCircle2 className="w-4 h-4 text-[#2d6a4f] flex-shrink-0" />
+                            <span>{item}</span>
+                          </motion.li>
+                        ))}
+                      </ul>
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+
               </div>
 
+              {/* Right Sub-column (5 cols): Feature Image Card Container with Cross-fading Images */}
+              <div className="sm:col-span-5 flex justify-center sm:justify-end">
+                <div className="w-full max-w-[220px] sm:max-w-full aspect-[3/4] overflow-hidden shadow-2xl rounded-2xl border-2 border-white bg-[#e0d6cb] relative group">
+                  {phases.map((phase, idx) => (
+                    <motion.img
+                      key={`card-img-${phase.id}`}
+                      src={phase.cardImg}
+                      alt={phase.title}
+                      initial={false}
+                      animate={{ opacity: activeIdx === idx ? 1 : 0, scale: activeIdx === idx ? 1 : 1.05 }}
+                      transition={{ duration: 0.6, ease: 'easeInOut' }}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  ))}
+
+                  {/* Phase Indicator Badge on top of image */}
+                  <div className="absolute top-2 right-2 px-2.5 py-1 rounded-full bg-black/65 backdrop-blur-md text-white font-roboto text-xs font-bold border border-white/20">
+                    0{activeIdx + 1} / 03
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Bottom Stats Strip */}
+            <div className="grid grid-cols-3 gap-3 pt-2.5 border-t border-black/10">
+              <div className="p-3 rounded-xl bg-white/80 border border-black/5 text-center shadow-sm">
+                <span className="font-roboto font-black text-xl sm:text-2xl text-[#FE9601] block">1000+</span>
+                <span className="text-xs font-roboto font-bold text-[#160d02]/80 uppercase tracking-wider block mt-0.5">Happy Families</span>
+              </div>
+              <div className="p-3 rounded-xl bg-white/80 border border-black/5 text-center shadow-sm">
+                <span className="font-roboto font-black text-xl sm:text-2xl text-[#FE9601] block">120+</span>
+                <span className="text-xs font-roboto font-bold text-[#160d02]/80 uppercase tracking-wider block mt-0.5">Projects Done</span>
+              </div>
+              <div className="p-3 rounded-xl bg-white/80 border border-black/5 text-center shadow-sm">
+                <span className="font-roboto font-black text-xl sm:text-2xl text-[#FE9601] block">20+ Yrs</span>
+                <span className="text-xs font-roboto font-bold text-[#160d02]/80 uppercase tracking-wider block mt-0.5">Heritage</span>
+              </div>
             </div>
 
           </div>
 
-          {/* Right Column - Tall Vertical Image Container (Stacked Layers for Zero Blank Background) */}
+          {/* Right Column - Tall Vertical Image Container */}
           <div className="lg:col-span-6 h-[88vh] sm:h-[92vh] overflow-hidden relative shadow-2xl bg-[#e0d6cb] rounded-none border border-black/10">
-            
-            {/* Slide 1 Image - Base Layer Always at y: 0% */}
+
+            {/* Slide 1 Image - Base Layer */}
             <div className="absolute inset-0 w-full h-full">
               <img
                 src={phases[0].mainImg}

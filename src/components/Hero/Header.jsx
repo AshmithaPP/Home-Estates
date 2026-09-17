@@ -15,7 +15,7 @@ export const Header = ({ onOpenTour, onOpenApply }) => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-40 px-6 sm:px-12 py-6 transition-all duration-300">
+      <header className="absolute top-0 left-0 right-0 z-40 px-6 sm:px-12 py-6 transition-all duration-300">
         <div className="max-w-[1800px] mx-auto flex items-center justify-between">
 
           {/* Logo on Left (Clean normal letters: Ajay Homes & Estates) */}
@@ -31,24 +31,23 @@ export const Header = ({ onOpenTour, onOpenApply }) => {
             </span>
           </motion.a>
 
-          {/* Center Navigation Pill (Screenshot 1: == Menu) */}
-          <motion.div
+          {/* Center Inline Navigation Bar */}
+          <motion.nav
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="hidden md:block"
+            className="hidden md:flex items-center gap-1 sm:gap-1.5 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-[#2d6a4f]/30 shadow-lg"
           >
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="glass-pill-dark hover:glass-pill px-5 py-2 rounded-full flex items-center gap-3 text-sm font-medium tracking-wide text-white/90 hover:text-white transition-all cursor-pointer group shadow-md border border-white/20"
-            >
-              <span className="flex flex-col gap-1 w-4">
-                <span className="w-full h-[2px] bg-[#FE9601] group-hover:w-3 transition-all" />
-                <span className="w-full h-[2px] bg-white group-hover:w-4 transition-all" />
-              </span>
-              <span>Menu</span>
-            </button>
-          </motion.div>
+            {menuItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-extrabold text-[#2d6a4f] hover:text-[#193d2d] hover:bg-[#2d6a4f]/10 transition-all cursor-pointer"
+              >
+                {item.label}
+              </a>
+            ))}
+          </motion.nav>
 
           {/* Right CTAs (Schedule a Tour & Joint Venture) */}
           <motion.div

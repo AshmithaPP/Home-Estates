@@ -6,6 +6,7 @@ import BalancedLivingSection from './components/BalancedLiving/BalancedLivingSec
 import CustomerStoriesSection from './components/CustomerStories/CustomerStoriesSection';
 import FAQSection from './components/FAQ/FAQSection';
 import FindYourPlaceSection from './components/CTA/FindYourPlaceSection';
+import ContactSection from './components/Contact/ContactSection';
 import Footer from './components/Footer/Footer';
 import ApplyModal from './components/Modals/ApplyModal';
 
@@ -36,10 +37,13 @@ function App() {
         onOpenApply={() => setIsApplyModalOpen(true)}
       />
 
-      {/* 7. Pre-Footer Banner: Find your place. Make it yours. */}
+      {/* 7. Pre-Footer Banner: Joint Venture Property Promotion */}
       <FindYourPlaceSection />
 
-      {/* 8. Footer */}
+      {/* 8. Contact Form Section (Bottom to Top Scroll Transition) */}
+      <ContactSection />
+
+      {/* 9. Footer */}
       <Footer
         onOpenApply={() => setIsApplyModalOpen(true)}
       />

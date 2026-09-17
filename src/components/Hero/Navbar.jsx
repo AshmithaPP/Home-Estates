@@ -9,7 +9,7 @@ export const Navbar = ({ onOpenTourModal, onOpenApplyModal }) => {
     <>
       <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 py-5 transition-all duration-300">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          
+
           {/* Brand Logo (Screenshot 1: 21OAKS) */}
           <motion.a
             href="#"
@@ -28,24 +28,28 @@ export const Navbar = ({ onOpenTourModal, onOpenApplyModal }) => {
             </div>
           </motion.a>
 
-          {/* Center Floating Menu Pill (Screenshot 1: == Menu) */}
-          <motion.div
+          {/* Center Inline Navigation Bar */}
+          <motion.nav
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="hidden md:block"
+            className="hidden md:flex items-center gap-1 sm:gap-1.5 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-[#2d6a4f]/30 shadow-lg"
           >
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="glass-pill-dark hover:glass-pill px-5 py-2.5 rounded-full flex items-center gap-3 text-sm font-medium tracking-wide text-white/90 hover:text-white transition-all cursor-pointer group shadow-lg"
-            >
-              <span className="flex flex-col gap-1 w-4">
-                <span className="w-full h-[2px] bg-[#fe9601] group-hover:w-3 transition-all"></span>
-                <span className="w-full h-[2px] bg-white group-hover:w-4 transition-all"></span>
-              </span>
-              <span>Menu</span>
-            </button>
-          </motion.div>
+            {[
+              { label: 'About us', href: '#about' },
+              { label: 'Photo gallery', href: '#gallery' },
+              { label: 'Interior', href: '#interior' },
+              { label: 'Contact us', href: '#contact' },
+            ].map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-extrabold text-[#2d6a4f] hover:text-[#193d2d] hover:bg-[#2d6a4f]/10 transition-all cursor-pointer"
+              >
+                {item.label}
+              </a>
+            ))}
+          </motion.nav>
 
           {/* Right Controls (Screenshot 1: Schedule a Tour & Apply Now) */}
           <motion.div
@@ -54,11 +58,12 @@ export const Navbar = ({ onOpenTourModal, onOpenApplyModal }) => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex items-center gap-3"
           >
-            {/* Schedule a Tour Button */}
+            {/* Schedule a Tour Button with Green Status Dot */}
             <button
               onClick={onOpenTourModal}
               className="hidden sm:flex glass-pill hover:bg-white/20 px-4 py-2 rounded-full text-xs sm:text-sm font-medium text-white transition-all items-center gap-2 cursor-pointer shadow-md hover:scale-105 active:scale-95"
             >
+              <span className="w-2 h-2 rounded-full bg-[#2d6a4f] animate-pulse inline-block shadow-[0_0_8px_#2d6a4f]" />
               <Calendar className="w-3.5 h-3.5 text-[#ffc973]" />
               <span>Schedule a Tour</span>
             </button>
