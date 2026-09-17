@@ -1,17 +1,30 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { useRef, useState } from 'react';
+import { motion, useScroll, useTransform, useMotionValueEvent, AnimatePresence } from 'framer-motion';
 
 /**
  * EverydayLivingSection Component
- * Fixes MotionValue reactivity using direct style opacity bindings for scroll transitions.
+ * Uses AnimatePresence + activeIdx scroll event tracking to prevent text collision
+ * and maintain crisp, clean typography with proper grid spacing.
  */
 export const EverydayLivingSection = () => {
   const sectionRef = useRef(null);
+  const [activeIdx, setActiveIdx] = useState(0);
 
   // Track scroll progress through this section (0 to 1)
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start start', 'end end'],
+  });
+
+  // Track active scroll phase (0, 1, 2) cleanly
+  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+    if (latest < 0.35) {
+      if (activeIdx !== 0) setActiveIdx(0);
+    } else if (latest < 0.7) {
+      if (activeIdx !== 1) setActiveIdx(1);
+    } else {
+      if (activeIdx !== 2) setActiveIdx(2);
+    }
   });
 
   // 3 Phases of Right-side Vertical Images and Left Content
@@ -39,17 +52,12 @@ export const EverydayLivingSection = () => {
     },
   ];
 
-  // Right-side image scroll Y-transforms
-  const rightImgY1 = useTransform(scrollYProgress, [0, 0.35], ['0%', '-100%']);
-  const rightImgY2 = useTransform(scrollYProgress, [0.35, 0.7], ['100%', '0%']);
-  const rightImgY3 = useTransform(scrollYProgress, [0.7, 1], ['100%', '0%']);
-
-  // MotionValue Opacity transforms for responsive scroll transitions
-  const cardOpacity1 = useTransform(scrollYProgress, [0, 0.3, 0.38], [1, 1, 0]);
-  const cardOpacity2 = useTransform(scrollYProgress, [0.35, 0.42, 0.65, 0.72], [0, 1, 1, 0]);
-  const cardOpacity3 = useTransform(scrollYProgress, [0.68, 0.76, 1], [0, 1, 1]);
-
-  const cardOpacities = [cardOpacity1, cardOpacity2, cardOpacity3];
+  // Right-side image scroll Y-transforms (Stacked Overlay approach so background NEVER turns blank)
+  // Image 1 is always base at 0%
+  // Image 2 slides up over Image 1 between scroll 0.25 and 0.55
+  const rightImgY2 = useTransform(scrollYProgress, [0.25, 0.55], ['100%', '0%']);
+  // Image 3 slides up over Image 2 between scroll 0.60 and 0.90
+  const rightImgY3 = useTransform(scrollYProgress, [0.60, 0.90], ['100%', '0%']);
 
   return (
     <div ref={sectionRef} className="relative h-[250vh] bg-[#FFF5E3] text-[#160d02]">
@@ -76,60 +84,62 @@ export const EverydayLivingSection = () => {
             {/* Feature Image Card + Content Below */}
             <div className="flex flex-col items-end pr-2 sm:pr-6 pt-2 space-y-2">
               
-              {/* Short Feature Image Container */}
-              <div className="w-64 sm:w-80 lg:w-96 h-72 sm:h-96 lg:h-[420px] overflow-hidden shadow-2xl bg-white rounded-none border border-black/10 relative">
+              {/* Short Feature Image Container - Cross-Fading to Prevent White Blank Gaps */}
+              <div className="w-64 sm:w-80 lg:w-96 h-72 sm:h-96 lg:h-[420px] overflow-hidden shadow-2xl bg-[#e0d6cb] rounded-none border border-black/10 relative">
                 {phases.map((phase, idx) => (
                   <motion.img
-                    key={`card-${phase.id}`}
+                    key={`card-img-${phase.id}`}
                     src={phase.cardImg}
-                    alt="Interior Card"
-                    style={{ opacity: cardOpacities[idx] }}
+                    alt={phase.title}
+                    initial={false}
+                    animate={{ opacity: activeIdx === idx ? 1 : 0 }}
+                    transition={{ duration: 0.5, ease: 'easeInOut' }}
                     className="absolute inset-0 w-full h-full object-cover"
                   />
                 ))}
               </div>
 
-              {/* Content Below Short Image (Dot + Title + Subtext) */}
+              {/* Content Below Short Image (Dot + Title + Subtext) - Single Active Text Container */}
               <div className="w-64 sm:w-80 lg:w-96 space-y-1 pt-1 text-left relative h-16">
-                {phases.map((phase, idx) => (
+                <AnimatePresence mode="wait">
                   <motion.div
-                    key={`text-${phase.id}`}
-                    style={{ opacity: cardOpacities[idx] }}
+                    key={`text-${phases[activeIdx].id}`}
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    transition={{ duration: 0.25, ease: 'easeOut' }}
                     className="absolute inset-0 space-y-0.5"
                   >
                     <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#c084fc]" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#FE9601]" />
                       <h4 className="font-serif-luxury font-bold text-sm sm:text-base text-[#160d02]">
-                        {phase.title}
+                        {phases[activeIdx].title}
                       </h4>
                     </div>
                     <p className="text-xs sm:text-sm text-[#160d02]/75 font-sans pl-3.5">
-                      {phase.desc}
+                      {phases[activeIdx].desc}
                     </p>
                   </motion.div>
-                ))}
+                </AnimatePresence>
               </div>
 
             </div>
 
           </div>
 
-          {/* Right Column - Tall Vertical Image Container */}
+          {/* Right Column - Tall Vertical Image Container (Stacked Layers for Zero Blank Background) */}
           <div className="lg:col-span-6 h-[88vh] sm:h-[92vh] overflow-hidden relative shadow-2xl bg-[#e0d6cb] rounded-none border border-black/10">
             
-            {/* Slide 1 Image */}
-            <motion.div
-              style={{ y: rightImgY1 }}
-              className="absolute inset-0 w-full h-full"
-            >
+            {/* Slide 1 Image - Base Layer Always at y: 0% */}
+            <div className="absolute inset-0 w-full h-full">
               <img
                 src={phases[0].mainImg}
                 alt="Bedroom Wall Art & Living Setting"
                 className="w-full h-full object-cover object-center"
               />
-            </motion.div>
+            </div>
 
-            {/* Slide 2 Image */}
+            {/* Slide 2 Image - Slides UP over Slide 1 */}
             <motion.div
               style={{ y: rightImgY2 }}
               className="absolute inset-0 w-full h-full"
@@ -141,7 +151,7 @@ export const EverydayLivingSection = () => {
               />
             </motion.div>
 
-            {/* Slide 3 Image */}
+            {/* Slide 3 Image - Slides UP over Slide 2 */}
             <motion.div
               style={{ y: rightImgY3 }}
               className="absolute inset-0 w-full h-full"

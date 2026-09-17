@@ -1,23 +1,26 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, Pause, Volume2, VolumeX, Sparkles, Maximize2, Minimize2, RotateCcw } from 'lucide-react';
+import { Play, Pause, Volume2, VolumeX, Sparkles, Star, Quote, RotateCcw } from 'lucide-react';
 
-/**
- * CustomerStoriesSection Component
- * Implements exact user video interaction specs:
- * 1. Initial State: Large preview card with prominent center play button overlay (subtle pulse ring).
- * 2. Click Play Interaction: Smooth play → expand → video transition with scale, opacity, & position motion.
- * 3. Video Controls: Real HTML5 video element with play/pause, mute, progress bar, and pause UI overlay.
- * 4. Scroll Reveal: Section reveals smoothly into view on scroll with slide/fade typography.
- */
 export const CustomerStoriesSection = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
   const [progress, setProgress] = useState(0);
   const videoRef = useRef(null);
 
-  // Update video progress bar
+  // Auto-play video when player opens
+  useEffect(() => {
+    if (isOpen && videoRef.current) {
+      videoRef.current.currentTime = 0;
+      videoRef.current.play().then(() => {
+        setIsPlaying(true);
+      }).catch(() => {
+        setIsPlaying(false);
+      });
+    }
+  }, [isOpen]);
+
   const handleTimeUpdate = () => {
     if (videoRef.current) {
       const current = videoRef.current.currentTime;
@@ -30,10 +33,6 @@ export const CustomerStoriesSection = () => {
     setIsOpen(true);
     setIsPlaying(true);
     setIsMuted(false);
-    if (videoRef.current) {
-      videoRef.current.muted = false;
-      videoRef.current.play().catch(() => {});
-    }
   };
 
   const togglePlayPause = (e) => {
@@ -43,8 +42,9 @@ export const CustomerStoriesSection = () => {
         videoRef.current.pause();
         setIsPlaying(false);
       } else {
-        videoRef.current.play().catch(() => {});
-        setIsPlaying(true);
+        videoRef.current.play().then(() => {
+          setIsPlaying(true);
+        }).catch(() => {});
       }
     }
   };
@@ -70,26 +70,38 @@ export const CustomerStoriesSection = () => {
   };
 
   const handleClosePlayer = (e) => {
-    e.stopPropagation();
+    e?.stopPropagation();
     setIsOpen(false);
     setIsPlaying(false);
     setIsMuted(true);
     if (videoRef.current) {
       videoRef.current.pause();
-      videoRef.current.muted = true;
     }
   };
 
   return (
     <section className="relative w-full py-24 px-4 sm:px-8 bg-[#FFF5E3] text-[#160d02] overflow-hidden">
-      
-      {/* Background Ambient Glows (#FE9601 & #FFC973) */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#FE9601]/10 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#FFC973]/15 rounded-full blur-[150px] pointer-events-none" />
+      {/* Background Animated Ambient Lights */}
+      <motion.div
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.15, 0.25, 0.15],
+        }}
+        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#FE9601]/20 rounded-full blur-[140px] pointer-events-none"
+      />
+      <motion.div
+        animate={{
+          scale: [1.2, 1, 1.2],
+          opacity: [0.2, 0.3, 0.2],
+        }}
+        transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute bottom-10 right-10 w-96 h-96 bg-[#FFC973]/25 rounded-full blur-[140px] pointer-events-none"
+      />
 
       <div className="max-w-[1400px] mx-auto space-y-12 relative z-10">
         
-        {/* Section Header Text Hierarchy - Scroll Reveal & Selectable Copy */}
+        {/* Section Header Text Hierarchy */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -97,26 +109,25 @@ export const CustomerStoriesSection = () => {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-4xl mx-auto space-y-4 select-text"
         >
-          
           {/* Eyebrow Label Centered */}
           <div className="flex justify-center">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FE9601]/15 border border-[#FE9601]/40 text-[#FE9601] text-xs font-bold uppercase tracking-widest shadow-sm">
-              <Sparkles className="w-3.5 h-3.5 text-[#FE9601]" />
-              <span>Customer Stories</span>
+              <Sparkles className="w-3.5 h-3.5 text-[#FE9601] animate-pulse" />
+              <span>Aerial Township Showcase</span>
             </div>
           </div>
 
-          {/* Heading: Line 1 Left-aligned, Line 2 Right-aligned */}
+          {/* Heading */}
           <div className="space-y-1">
             <div className="text-left">
               <h2 className="text-3xl sm:text-5xl md:text-6xl font-serif-luxury font-bold text-[#160d02] tracking-tight leading-tight">
-                Hear It From The
+                Experience Our Master-Planned
               </h2>
             </div>
             <div className="text-right">
               <h2 className="text-3xl sm:text-5xl md:text-6xl font-serif-luxury font-bold text-[#160d02] tracking-tight leading-tight">
                 <span className="underline-brush font-serif-luxury text-[#160d02] inline-block">
-                  People We Built For.
+                  Luxury Estates & Townships.
                 </span>
               </h2>
             </div>
@@ -124,12 +135,11 @@ export const CustomerStoriesSection = () => {
 
           {/* Description Subtext */}
           <p className="text-xs sm:text-base text-[#160d02]/80 font-sans max-w-2xl mx-auto text-center leading-relaxed pt-2">
-            Every home has a story. Hear directly from the families who trusted Ajay Homes to turn their vision into a place they are proud to call home.
+            Take an aerial tour of our signature gated communities, premium villa developments, and world-class residential infrastructure built by Ajay Homes & Estates.
           </p>
-
         </motion.div>
 
-        {/* Video Card Container - Scroll Reveal & Subtle Hover Lift */}
+        {/* Animated Video Section Container */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -140,55 +150,111 @@ export const CustomerStoriesSection = () => {
           <motion.div
             layout
             whileHover={{ y: isOpen ? 0 : -6 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.4 }}
             onClick={!isOpen ? handleOpenAndPlay : undefined}
             className={`relative w-full overflow-hidden transition-all duration-700 ease-in-out cursor-pointer shadow-2xl rounded-3xl border border-black/10 bg-[#0c0d10] ${
-              isOpen ? 'aspect-video scale-102 ring-4 ring-[#FE9601]/40' : 'aspect-video max-w-4xl hover:shadow-[0_25px_60px_rgba(254,150,1,0.25)]'
+              isOpen ? 'aspect-video scale-102 ring-4 ring-[#FE9601]/40' : 'aspect-video max-w-4xl hover:shadow-[0_25px_60px_rgba(254,150,1,0.3)]'
             }`}
           >
-            {/* Real HTML5 Video Element */}
+            {/* Real HTML5 Video Player */}
             <video
               ref={videoRef}
-              src="https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-luxury-home-with-a-pool-42512-large.mp4"
-              poster="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop"
               autoPlay
               loop
-              muted={isMuted}
+              muted={!isOpen || isMuted}
               playsInline
+              poster="/luxury-villa-video-poster.jpg"
               onTimeUpdate={handleTimeUpdate}
+              onEnded={() => setIsPlaying(false)}
               className="w-full h-full object-cover"
-            />
+            >
+              <source src="/302062_medium.mp4" type="video/mp4" />
+              <source src="/luxury-villa-tour.mp4" type="video/mp4" />
+              Your browser does not support video playback.
+            </video>
 
-            {/* Ambient Dark Gradient Overlay when paused or unopened */}
+            {/* Dark Ambient Overlay when unopened/paused */}
             {(!isOpen || !isPlaying) && (
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/20 transition-opacity duration-500" />
             )}
 
-            {/* Prominent Center Play Button with Pulse & Scale Interaction */}
+            {/* Floating Rating Pill - Top Right */}
+            {!isOpen && (
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="absolute top-5 right-5 z-20 glass-pill-dark px-3.5 py-1.5 rounded-full flex items-center gap-2 border border-white/20 shadow-lg text-xs font-semibold text-white pointer-events-none"
+              >
+                <div className="flex text-[#FE9601]">
+                  <Star className="w-3.5 h-3.5 fill-[#FE9601]" />
+                  <Star className="w-3.5 h-3.5 fill-[#FE9601]" />
+                  <Star className="w-3.5 h-3.5 fill-[#FE9601]" />
+                  <Star className="w-3.5 h-3.5 fill-[#FE9601]" />
+                  <Star className="w-3.5 h-3.5 fill-[#FE9601]" />
+                </div>
+                <span>150+ Acres of Master-Planned Living</span>
+              </motion.div>
+            )}
+
+            {/* Floating Testimonial Quote Pill - Bottom Left */}
+            {!isOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="absolute bottom-6 left-6 z-20 max-w-sm glass-pill-dark p-4 rounded-2xl border border-white/20 shadow-xl hidden sm:block pointer-events-none"
+              >
+                <div className="flex items-start gap-2.5">
+                  <Quote className="w-5 h-5 text-[#FE9601] flex-shrink-0" />
+                  <div>
+                    <p className="text-xs text-white/90 font-medium leading-relaxed">
+                      "An aerial perspective of our sprawling luxury gated townships, integrated green spaces, and premier infrastructure."
+                    </p>
+                    <span className="text-[10px] text-[#FFC973] font-bold uppercase tracking-wider block mt-1">
+                      — AJAY HOMES ARCHITECTURAL SHOWCASE
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+
+            {/* Prominent Multi-Ring Animated Play Button */}
             {(!isOpen || !isPlaying) && (
-              <div className="absolute inset-0 flex flex-col items-center justify-center z-20 pointer-events-none space-y-3">
+              <div className="absolute inset-0 flex flex-col items-center justify-center z-20 pointer-events-none space-y-4">
                 <motion.button
                   whileHover={{ scale: 1.15 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={!isOpen ? handleOpenAndPlay : togglePlayPause}
-                  className="pointer-events-auto relative w-20 h-20 sm:w-24 sm:h-24 rounded-full btn-gold-gradient flex items-center justify-center shadow-2xl group cursor-pointer"
-                  aria-label="Play Customer Story Video"
+                  className="pointer-events-auto relative w-20 h-20 sm:w-24 sm:h-24 rounded-full btn-gold-gradient flex items-center justify-center shadow-[0_0_50px_rgba(254,150,1,0.6)] group cursor-pointer"
+                  aria-label="Play Drone Township Video"
                 >
-                  {/* Subtle Pulse Aura Ring */}
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FE9601] opacity-40" />
+                  {/* Outer Pulsing Rings */}
+                  <motion.span
+                    animate={{ scale: [1, 1.4, 1], opacity: [0.6, 0, 0.6] }}
+                    transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+                    className="absolute inset-0 rounded-full border-2 border-[#FE9601]"
+                  />
+                  <motion.span
+                    animate={{ scale: [1, 1.7, 1], opacity: [0.4, 0, 0.4] }}
+                    transition={{ duration: 2.5, delay: 0.5, repeat: Infinity, ease: 'easeInOut' }}
+                    className="absolute inset-0 rounded-full border border-[#FFC973]"
+                  />
 
                   <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors">
                     <Play className="w-8 h-8 sm:w-10 sm:h-10 text-black fill-black ml-1" />
                   </div>
                 </motion.button>
 
-                <p className="text-white text-xs sm:text-sm font-semibold tracking-wider drop-shadow-md">
-                  {!isOpen ? 'Click to Watch Family Story' : 'Paused — Click to Resume'}
-                </p>
+                <motion.p
+                  animate={{ y: [0, 3, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="text-white text-xs sm:text-sm font-bold uppercase tracking-wider drop-shadow-lg bg-black/40 px-4 py-1.5 rounded-full border border-white/20 backdrop-blur-md"
+                >
+                  {!isOpen ? 'Click to Watch Aerial Flythrough' : 'Paused — Click to Resume'}
+                </motion.p>
               </div>
             )}
 
-            {/* Opened Video Controls Bar */}
+            {/* Opened Video Player Controls */}
             {isOpen && (
               <AnimatePresence>
                 <motion.div
@@ -196,12 +262,12 @@ export const CustomerStoriesSection = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 20 }}
                   transition={{ duration: 0.3 }}
-                  className="absolute bottom-0 left-0 right-0 z-30 p-4 bg-gradient-to-t from-black/90 via-black/60 to-transparent flex flex-col gap-2"
+                  className="absolute bottom-0 left-0 right-0 z-30 p-4 sm:p-6 bg-gradient-to-t from-black/95 via-black/70 to-transparent flex flex-col gap-3"
                 >
-                  {/* Interactive Progress Bar */}
+                  {/* Interactive Seek Bar */}
                   <div
                     onClick={handleSeek}
-                    className="w-full h-1.5 bg-white/30 hover:h-2.5 rounded-full overflow-hidden cursor-pointer transition-all"
+                    className="w-full h-2 bg-white/30 hover:h-3 rounded-full overflow-hidden cursor-pointer transition-all relative group"
                   >
                     <div
                       style={{ width: `${progress}%` }}
@@ -210,28 +276,28 @@ export const CustomerStoriesSection = () => {
                   </div>
 
                   <div className="flex items-center justify-between text-xs text-white pt-1">
-                    {/* Play/Pause & Mute */}
+                    {/* Play/Pause & Sound Controls */}
                     <div className="flex items-center gap-3">
                       <button
                         onClick={togglePlayPause}
-                        className="btn-gold-gradient py-1.5 px-4 rounded-xl text-black font-bold flex items-center gap-1.5 text-xs shadow-md"
+                        className="btn-gold-gradient py-2 px-4 rounded-xl text-black font-extrabold flex items-center gap-2 text-xs shadow-lg hover:scale-105 active:scale-95 transition-all cursor-pointer"
                       >
                         {isPlaying ? (
                           <>
-                            <Pause className="w-3.5 h-3.5 text-black" />
+                            <Pause className="w-4 h-4 text-black fill-black" />
                             <span>Pause</span>
                           </>
                         ) : (
                           <>
-                            <Play className="w-3.5 h-3.5 text-black fill-black" />
-                            <span>Play</span>
+                            <Play className="w-4 h-4 text-black fill-black" />
+                            <span>Play Video</span>
                           </>
                         )}
                       </button>
 
                       <button
                         onClick={toggleMute}
-                        className="p-1.5 rounded-lg hover:bg-white/20 transition-colors text-white"
+                        className="p-2 rounded-xl glass-pill-dark hover:bg-white/20 transition-colors text-white cursor-pointer"
                         aria-label="Toggle Mute"
                       >
                         {isMuted ? (
@@ -241,18 +307,23 @@ export const CustomerStoriesSection = () => {
                         )}
                       </button>
 
-                      <span className="text-white/70 text-[11px] font-sans hidden sm:inline">
-                        Ajay Homes Family Customer Story
-                      </span>
+                      {/* Playing Equalizer Animation Bars */}
+                      {isPlaying && (
+                        <div className="hidden sm:flex items-center gap-1 pl-2">
+                          <motion.span animate={{ height: [4, 16, 6, 18, 4] }} transition={{ duration: 0.8, repeat: Infinity }} className="w-1 bg-[#FE9601] rounded-full" />
+                          <motion.span animate={{ height: [14, 6, 18, 4, 14] }} transition={{ duration: 0.7, repeat: Infinity }} className="w-1 bg-[#FFC973] rounded-full" />
+                          <motion.span animate={{ height: [8, 18, 4, 14, 8] }} transition={{ duration: 0.9, repeat: Infinity }} className="w-1 bg-[#FE9601] rounded-full" />
+                        </div>
+                      )}
                     </div>
 
-                    {/* Minimize / Close Control */}
+                    {/* Return Button */}
                     <button
                       onClick={handleClosePlayer}
-                      className="glass-pill-dark px-3 py-1.5 rounded-xl text-[11px] text-white/90 hover:text-white flex items-center gap-1 shadow-md border border-white/20 cursor-pointer"
+                      className="glass-pill-dark px-3.5 py-2 rounded-xl text-xs text-white/90 hover:text-white flex items-center gap-2 shadow-md border border-white/20 cursor-pointer hover:bg-white/20 transition-all"
                     >
-                      <RotateCcw className="w-3 h-3 text-[#FE9601]" />
-                      <span>Return to Card View</span>
+                      <RotateCcw className="w-3.5 h-3.5 text-[#FE9601]" />
+                      <span>Return to Preview</span>
                     </button>
                   </div>
                 </motion.div>
